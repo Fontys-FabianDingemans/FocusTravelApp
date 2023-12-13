@@ -1,0 +1,98 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="FocusTravelApp.MainPage"
+             Shell.NavBarIsVisible="False"
+             BackgroundColor="{StaticResource AppBackground}"
+             Padding="5, 30, 5, 0">
+    
+    <VerticalStackLayout
+        Padding="25,0"
+        Spacing="20">
+            
+        <HorizontalStackLayout
+            VerticalOptions="Center"
+            HorizontalOptions="Center"
+            >
+            
+            <Frame
+                WidthRequest="100"
+                HeightRequest="100"
+                CornerRadius="50"
+                Padding="0"
+                ZIndex="5"
+                BackgroundColor="{StaticResource Secondary}"
+                x:Name="StartStopButton"
+            >
+                <Frame.GestureRecognizers>
+                    <TapGestureRecognizer Tapped="StartStopButtonTapped"></TapGestureRecognizer>
+                </Frame.GestureRecognizers>
+                <Label 
+                    Text="Start"
+                    TextColor="White"
+                    FontSize="25"
+                    HorizontalOptions="Center"
+                    VerticalOptions="Center"
+                    FontAttributes="Bold"
+                    x:Name="StartStopButtonText"
+                />
+            </Frame>
+            
+            <Grid
+                BackgroundColor="{StaticResource PrimaryDark}"
+                Margin="-20,0,0,0"
+                WidthRequest="250"
+                HeightRequest="60"
+                ZIndex="1"
+                RowSpacing="1"
+                ColumnSpacing="1"
+                Padding="25,3, 0, 0">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="30" />
+                    <RowDefinition Height="30" />
+                </Grid.RowDefinitions>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="60" />
+                    <ColumnDefinition Width="100" />
+                </Grid.ColumnDefinitions>
+                
+                <Label
+                    Grid.Row="0"
+                    Grid.Column="0"
+                    Text="Duur:"
+                    TextColor="{StaticResource PrimaryDarkText}"
+                    FontSize="20"
+                />
+                <Label
+                    Grid.Row="0"
+                    Grid.Column="1"
+                    Text="00:00:00"
+                    TextColor="{StaticResource PrimaryDarkText}"
+                    FontSize="20"
+                    x:Name="DriveTimeText"
+                />
+                <Label
+                    Grid.Row="1"
+                    Grid.Column="0"
+                    Text="Afstand:"
+                    TextColor="{StaticResource PrimaryDarkText}"
+                />
+                <Label
+                    Grid.Row="1"
+                    Grid.Column="1"
+                    Text="0 KM"
+                    TextColor="{StaticResource PrimaryDarkText}"
+                    x:Name="DriveDistanceText"
+                />
+                
+            </Grid>
+            
+        </HorizontalStackLayout>
+        
+        <ScrollView>
+        
+        </ScrollView>
+            
+    </VerticalStackLayout>
+
+</ContentPage>
