@@ -42,11 +42,11 @@
                 BackgroundColor="{StaticResource PrimaryDark}"
                 Margin="-20,0,0,0"
                 WidthRequest="250"
-                HeightRequest="60"
+                HeightRequest="70"
                 ZIndex="1"
                 RowSpacing="1"
                 ColumnSpacing="1"
-                Padding="25,3, 0, 0">
+                Padding="28,5, 0, 5">
                 <Grid.RowDefinitions>
                     <RowDefinition Height="30" />
                     <RowDefinition Height="30" />
@@ -61,20 +61,21 @@
                     Grid.Column="0"
                     Text="Duur:"
                     TextColor="{StaticResource PrimaryDarkText}"
-                    FontSize="20"
+                    FontSize="22"
                 />
                 <Label
                     Grid.Row="0"
                     Grid.Column="1"
                     Text="00:00:00"
                     TextColor="{StaticResource PrimaryDarkText}"
-                    FontSize="20"
+                    FontSize="22"
                     x:Name="DriveTimeText"
                 />
                 <Label
                     Grid.Row="1"
                     Grid.Column="0"
                     Text="Afstand:"
+                    FontSize="18"
                     TextColor="{StaticResource PrimaryDarkText}"
                 />
                 <Label
@@ -82,6 +83,7 @@
                     Grid.Column="1"
                     Text="0 KM"
                     TextColor="{StaticResource PrimaryDarkText}"
+                    FontSize="18"
                     x:Name="DriveDistanceText"
                 />
                 

@@ -1,55 +1,52 @@
 ﻿using System.Diagnostics;
-using System.Timers;
-using Timer = System.Timers.Timer;
 
 namespace FocusTravelApp;
 
+using FocusTravelApp.Managers;
+
 public partial class MainPage : ContentPage
 {
-    private readonly Timer _driveTimer;
-    private int _currentDriveTime = 0;
+    private readonly DriveTimeManager _driveTimeManager;
+    private readonly DriveDistanceManager _driveDistanceManager;
     
     public MainPage()
     {
         InitializeComponent();
-        BindingContext = this;
-        
-        _driveTimer = new Timer();
-        _driveTimer.Interval = 1000;
-        _driveTimer.Elapsed += DriveTimerElapsed;
+        this._driveTimeManager = new DriveTimeManager(this.UpdateDriveTimeText);
+        this._driveDistanceManager = new DriveDistanceManager(this.UpdateDriveDistanceText);
     }
 
     private void StartStopButtonTapped(object sender, TappedEventArgs args)
     {
-        Debug.WriteLine("StartStopButtonTapped");
-        
-        if(_driveTimer.Enabled){
-            _driveTimer.Stop();
-            StartStopButtonText.Text = "Start";
-            StartStopButton.BackgroundColor = Color.FromRgb(0, 176, 92);
+        if(this._driveTimeManager.IsRunning()){
+            this._driveTimeManager.Pause();
+            this.StartStopButtonText.Text = "Reset";
+            this.StartStopButton.BackgroundColor = Color.FromRgb(255, 153, 0);
+        }else if(this._driveTimeManager.IsPaused()){
+            this._driveTimeManager.Stop();
+            this.StartStopButtonText.Text = "Start";
+            this.StartStopButton.BackgroundColor = Color.FromRgb(0, 176, 92);
         }else{
-            _currentDriveTime = 0;
-            _driveTimer.Start();
-            StartStopButtonText.Text = "Stop";
-            StartStopButton.BackgroundColor = Color.FromRgb(255, 0, 0);
+            this._driveTimeManager.Start();
+            this.StartStopButtonText.Text = "Stop";
+            this.StartStopButton.BackgroundColor = Color.FromRgb(255, 0, 0);
         }
     }
     
-    private void DriveTimerElapsed(object sender, ElapsedEventArgs args)
+    private void UpdateDriveTimeText(string text)
     {
-        _currentDriveTime++;
-        
-        var formattedText = FormatSecsToHMS(_currentDriveTime);
-        DriveTimeText.Text = formattedText;
-            
-        Debug.WriteLine($"DriveTimerElapsed: {_currentDriveTime}");
-        Debug.WriteLine($"DriveTimerElapsed: {formattedText}");
-        
+        Application.Current?.Dispatcher.Dispatch(() =>
+        {
+            DriveTimeText.Text = text;
+        });
     }
     
-    private string FormatSecsToHMS(int seconds){
-        TimeSpan timeSpan = TimeSpan.FromSeconds(seconds);
-        return $"{(int)timeSpan.TotalHours:D2}:{timeSpan.Minutes:D2}:{timeSpan.Seconds:D2}";
+    private void UpdateDriveDistanceText(string text)
+    {
+        Application.Current?.Dispatcher.Dispatch(() =>
+        {
+            DriveDistanceText.Text = text;
+        });
     }
-
+    
 }
