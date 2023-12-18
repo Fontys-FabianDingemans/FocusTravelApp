@@ -1,7 +1,10 @@
-﻿using Android.App;
+﻿using System;
+using Android.App;
 using Android.Runtime;
+using Microsoft.Maui;
+using Microsoft.Maui.Hosting;
 
-namespace FocusTravelApp;
+namespace FocusTravelApp.Platforms.Android;
 
 [Application]
 public class MainApplication : MauiApplication
