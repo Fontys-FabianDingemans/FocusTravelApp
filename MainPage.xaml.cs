@@ -52,4 +52,28 @@ public partial class MainPage : ContentPage
         return $"{(int)timeSpan.TotalHours:D2}:{timeSpan.Minutes:D2}:{timeSpan.Seconds:D2}";
     }
 
+    private void PlayButton1Tapped(object sender, TappedEventArgs args)
+    {
+        Debug.WriteLine("Play button 1 tapped!");
+        
+    }
+
+    private void PlayButton2Tapped(object sender, TappedEventArgs args)
+    {
+        Debug.WriteLine("Play button 2 Tapped!");
+    }
+
+    private void PlayButton3Tapped(object sender, TappedEventArgs args)
+    {
+        Debug.WriteLine("Play button 3 tapped!");
+        
+    }
+    private void PlayButton4Tapped(object sender, TappedEventArgs args)
+    {
+        Debug.WriteLine("Play button 4 tapped!");
+    }
+    private void PlayButton5Tapped(object sender, TappedEventArgs args)
+    {
+        Debug.WriteLine("Play button 5 tapped!");
+    }
 }
