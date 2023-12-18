@@ -7,13 +7,13 @@ using FocusTravelApp.Managers;
 public partial class MainPage : ContentPage
 {
     private readonly DriveTimeManager _driveTimeManager;
-    private readonly DriveDistanceManager _driveDistanceManager;
+    private readonly BluetoothManager _bluetoothManager;
     
     public MainPage()
     {
         InitializeComponent();
-        this._driveTimeManager = new DriveTimeManager(this.UpdateDriveTimeText);
-        this._driveDistanceManager = new DriveDistanceManager(this.UpdateDriveDistanceText);
+        this._driveTimeManager = new DriveTimeManager(this.UpdateDriveTimeText, this.UpdateDriveDistanceText);
+        this._bluetoothManager = new BluetoothManager();
     }
 
     private void StartStopButtonTapped(object sender, TappedEventArgs args)
@@ -47,6 +47,12 @@ public partial class MainPage : ContentPage
         {
             DriveDistanceText.Text = text;
         });
+    }
+    
+    public void TempButtonClicked(object sender, EventArgs args)
+    {
+        Debug.WriteLine("Temp button clicked");
+        this._bluetoothManager.Run();
     }
     
 }
