@@ -129,7 +129,8 @@
                 TextColor="White"
                 Text="Apparaat verbinden:" />
             
-            <HorizontalStackLayout>
+            <HorizontalStackLayout
+                Spacing="5">
                 <Label
                     FontSize="16"
                     TextColor="White"
