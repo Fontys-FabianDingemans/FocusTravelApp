@@ -1,23 +1,20 @@
-﻿<?xml version="1.0" encoding="utf-8"?>
-
+﻿<?xml version="1.0" encoding="utf-8" ?>
 <ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-             xmlns:toolkit="http://schemas.microsoft.com/dotnet/2022/maui/toolkit"
              x:Class="FocusTravelApp.MainPage"
              Shell.NavBarIsVisible="False"
              BackgroundColor="{StaticResource AppBackground}"
              Padding="5, 30, 5, 0">
     
-
-
     <VerticalStackLayout
         Padding="25,0"
         Spacing="20">
 
         <HorizontalStackLayout
             VerticalOptions="Center"
-            HorizontalOptions="Center">
-
+            HorizontalOptions="Center"
+            >
+            
             <Frame
                 WidthRequest="100"
                 HeightRequest="100"
@@ -25,29 +22,31 @@
                 Padding="0"
                 ZIndex="5"
                 BackgroundColor="{StaticResource Secondary}"
-                x:Name="StartStopButton">
+                x:Name="StartStopButton"
+            >
                 <Frame.GestureRecognizers>
                     <TapGestureRecognizer Tapped="StartStopButtonTapped"></TapGestureRecognizer>
                 </Frame.GestureRecognizers>
-                <Label
+                <Label 
                     Text="Start"
                     TextColor="White"
                     FontSize="25"
                     HorizontalOptions="Center"
                     VerticalOptions="Center"
                     FontAttributes="Bold"
-                    x:Name="StartStopButtonText" />
+                    x:Name="StartStopButtonText"
+                />
             </Frame>
 
             <Grid
                 BackgroundColor="{StaticResource PrimaryDark}"
                 Margin="-20,0,0,0"
                 WidthRequest="250"
-                HeightRequest="60"
+                HeightRequest="70"
                 ZIndex="1"
                 RowSpacing="1"
                 ColumnSpacing="1"
-                Padding="25,3, 0, 0">
+                Padding="28,5, 0, 5">
                 <Grid.RowDefinitions>
                     <RowDefinition Height="30" />
                     <RowDefinition Height="30" />
@@ -62,25 +61,32 @@
                     Grid.Column="0"
                     Text="Duur:"
                     TextColor="{StaticResource PrimaryDarkText}"
-                    FontSize="20" />
+                    FontSize="22"
+                />
                 <Label
                     Grid.Row="0"
                     Grid.Column="1"
                     Text="00:00:00"
                     TextColor="{StaticResource PrimaryDarkText}"
-                    FontSize="20"
-                    x:Name="DriveTimeText" />
+                    FontSize="22"
+                    x:Name="DriveTimeText"
+                />
                 <Label
                     Grid.Row="1"
                     Grid.Column="0"
                     Text="Afstand:"
-                    TextColor="{StaticResource PrimaryDarkText}" />
+                    FontSize="18"
+                    TextColor="{StaticResource PrimaryDarkText}"
+                />
                 <Label
                     Grid.Row="1"
                     Grid.Column="1"
                     Text="0 KM"
                     TextColor="{StaticResource PrimaryDarkText}"
-                    x:Name="DriveDistanceText" />
+                    FontSize="18"
+                    x:Name="DriveDistanceText"
+                />
+                
             </Grid>
 
         </HorizontalStackLayout>
@@ -113,9 +119,10 @@
             <ScrollView>
                 <VerticalStackLayout>
                     <Frame x:Name="FrameOefening1"
-                           Padding="10,10,0,8"
-                           BackgroundColor="DarkGrey"
-                           Margin="0,0,0,10">
+                        Padding="10,10,0,8"
+                        BackgroundColor="DarkGrey"
+                        Margin="0,0,0,10"
+                        >
                         <Grid>
                             <Grid.RowDefinitions>
                                 <RowDefinition Height="20" />
@@ -156,9 +163,10 @@
                     </Frame>
 
                     <Frame x:Name="FrameOefening2"
-                           Padding="10,10,0,8"
-                           BackgroundColor="DarkGrey"
-                           Margin="0,0,0,10">
+                        Padding="10,10,0,8"
+                        BackgroundColor="DarkGrey"
+                        Margin="0,0,0,10"
+                        >
                         <Grid>
                             <Grid.RowDefinitions>
                                 <RowDefinition Height="20" />
@@ -239,9 +247,10 @@
                     </Frame>
 
                     <Frame x:Name="FrameOefening4"
-                           Padding="10,10,10,10"
-                           BackgroundColor="DarkGrey"
-                           Margin="0,0,0,10">
+                        Padding="10,10,10,10"
+                        BackgroundColor="DarkGrey"
+                        Margin="0,0,0,10"
+                        >
 
                         <Grid>
                             <Grid.RowDefinitions>
@@ -280,9 +289,10 @@
                     </Frame>
                     
                     <Frame x:Name="FrameOefening5"
-                           Padding="10,10,10,10"
-                           BackgroundColor="DarkGrey"
-                           Margin="0,0,0,10">
+                        Padding="10,10,10,10"
+                        BackgroundColor="DarkGrey"
+                        Margin="0,0,0,10"
+                        >
 
                         <Grid>
                             <Grid.RowDefinitions>
