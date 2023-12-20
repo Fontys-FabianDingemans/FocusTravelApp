@@ -19,5 +19,12 @@ public partial class ProfilePage : ContentPage
         InitializeComponent();
         BindingContext = profileViewModel;
     }
+
+    private void ClickedOnSettings(object sender, TappedEventArgs args)
+    {
+        Debug.WriteLine("Settings button tapped!");
+        var SettingsViewModel = new SettingsViewModel();
+        Navigation.PushAsync(new SettingsPage(SettingsViewModel));
+    }
     
 }
