@@ -1,5 +1,8 @@
-﻿using CommunityToolkit.Maui;
+﻿using System.Reflection;
+using CommunityToolkit.Maui;
+using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.Logging;
+using Microsoft.Maui.Controls.Compatibility.Platform.Android;
 
 namespace FocusTravelApp;
 
@@ -20,10 +23,19 @@ public static class MauiProgram
             fonts.AddFont("Inter-SemiBold.ttf", "InterSemiBold");
         }).UseMauiCommunityToolkitMediaElement();
         
+        
+        
 #if DEBUG
         builder.Logging.AddDebug();
 #endif
         
+        Microsoft.Maui.Handlers.EntryHandler.Mapper.AppendToMapping("NoUnderline", (h, v) =>
+        {
+            h.PlatformView.BackgroundTintList =
+                Android.Content.Res.ColorStateList.ValueOf(Colors.Transparent.ToAndroid());
+        });
+        
         return builder.Build();
     }
+    
 }
