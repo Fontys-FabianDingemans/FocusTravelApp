@@ -78,6 +78,8 @@ public class BluetoothManager
         
             var ble = CrossBluetoothLE.Current;
             var adapter = CrossBluetoothLE.Current.Adapter;
+            
+            setStatusTextCallback("Searching...", Color.FromRgb(255, 255, 255));
         
             this._pairedDevices = adapter.BondedDevices;
             foreach (var device in this._pairedDevices)
@@ -92,6 +94,7 @@ public class BluetoothManager
                     // Connect to to device
                     adapter.ConnectToDeviceAsync(device);
                     deviceFound = true;
+                    setStatusTextCallback("Device connected", Color.FromRgb(0, 255, 0));
                 }
                 
                 Debug.WriteLine($"Paired device: {deviceName}");
