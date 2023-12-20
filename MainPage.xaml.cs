@@ -73,11 +73,5 @@ public partial class MainPage : ContentPage
     {
         Debug.WriteLine("Play button 5 tapped!");
     }
-
-    private void ClickedOnProfiel(object sender, TappedEventArgs args)
-    {
-        Debug.WriteLine("Profiel button tapped!");
-        var profileViewModel = new ProfileViewModel();
-        Navigation.PushAsync(new ProfilePage(profileViewModel));
-    }
+    
 }

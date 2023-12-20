@@ -19,10 +19,5 @@ public partial class ProfilePage : ContentPage
         InitializeComponent();
         BindingContext = profileViewModel;
     }
-
-    private void GoBackButton(object? sender, TappedEventArgs e)
-    {
-        Debug.WriteLine("MainPage button tapped!");
-        Navigation.PopAsync();
-    }
+    
 }
