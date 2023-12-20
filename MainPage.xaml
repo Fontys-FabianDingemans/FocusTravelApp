@@ -7,7 +7,6 @@
              Shell.NavBarIsVisible="False"
              BackgroundColor="{StaticResource AppBackground}"
              Padding="5, 30, 5, 0">
-    
 
 
     <VerticalStackLayout
@@ -102,226 +101,227 @@
 
             </VerticalStackLayout>
         </Frame>
-        
-            <Label
-                Margin="0,20,0,-5  "
-                Text="Oefeningen"
-                TextColor="White"
-                FontSize="25"
-                FontAttributes="Bold" />
 
-            <ScrollView>
-                <VerticalStackLayout>
-                    <Frame x:Name="FrameOefening1"
-                           Padding="10,10,0,8"
-                           BackgroundColor="DarkGrey"
-                           Margin="0,0,0,10">
-                        <Grid>
-                            <Grid.RowDefinitions>
-                                <RowDefinition Height="20" />
-                                <RowDefinition Height="20" />
-                            </Grid.RowDefinitions>
-                            <Grid.ColumnDefinitions>
-                                <ColumnDefinition Width="260" />
-                                <ColumnDefinition Width="50" />
-                            </Grid.ColumnDefinitions>
+        <Label
+            Margin="0,20,0,-5  "
+            Text="Oefeningen"
+            TextColor="White"
+            FontSize="25"
+            FontAttributes="Bold" />
 
-                            <Label
-                                Grid.Row="0"
-                                Padding="0,-5,0,0 "
-                                Text="Oefening 1"
-                                TextColor="White"
-                                FontSize="17"
-                                FontAttributes="Bold" />
-                            <Label
-                                Grid.Column="0"
-                                Grid.Row="1"
-                                Text="Dit is oefening 1, je kan 'm nu uitvoeren!" />
+        <ScrollView>
+            <VerticalStackLayout>
+                <Frame x:Name="FrameOefening1"
+                       Padding="10,10,0,8"
+                       BackgroundColor="DarkGrey"
+                       Margin="0,0,0,10">
+                    <Grid>
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="20" />
+                            <RowDefinition Height="20" />
+                        </Grid.RowDefinitions>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="260" />
+                            <ColumnDefinition Width="50" />
+                        </Grid.ColumnDefinitions>
 
-                            <Polygon
-                                Grid.RowSpan="3"
-                                Grid.Column="1"
-                                Points="0,1 8,5, 0,10"
-                                Stroke="Black"
-                                Fill="green"
-                                Scale="3.0"
-                                Margin="40,15,0,10">
-                                <Polygon.GestureRecognizers>
-                                    <TapGestureRecognizer Tapped="PlayButton1Tapped" />
-                                </Polygon.GestureRecognizers>
-                            </Polygon>
+                        <Label
+                            Grid.Row="0"
+                            Padding="0,-5,0,0 "
+                            Text="Oefening 1"
+                            TextColor="White"
+                            FontSize="17"
+                            FontAttributes="Bold" />
+                        <Label
+                            Grid.Column="0"
+                            Grid.Row="1"
+                            Text="Dit is oefening 1, je kan 'm nu uitvoeren!" />
+
+                        <Polygon
+                            Grid.RowSpan="3"
+                            Grid.Column="1"
+                            Points="0,1 8,5, 0,10"
+                            Stroke="Black"
+                            Fill="green"
+                            Scale="3.0"
+                            Margin="40,15,0,10">
+                            <Polygon.GestureRecognizers>
+                                <TapGestureRecognizer Tapped="PlayButton1Tapped" />
+                            </Polygon.GestureRecognizers>
+                        </Polygon>
 
 
-                        </Grid>
-                    </Frame>
+                    </Grid>
+                </Frame>
 
-                    <Frame x:Name="FrameOefening2"
-                           Padding="10,10,0,8"
-                           BackgroundColor="DarkGrey"
-                           Margin="0,0,0,10">
-                        <Grid>
-                            <Grid.RowDefinitions>
-                                <RowDefinition Height="20" />
-                                <RowDefinition Height="20" />
-                            </Grid.RowDefinitions>
+                <Frame x:Name="FrameOefening2"
+                       Padding="10,10,0,8"
+                       BackgroundColor="DarkGrey"
+                       Margin="0,0,0,10">
+                    <Grid>
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="20" />
+                            <RowDefinition Height="20" />
+                        </Grid.RowDefinitions>
 
-                            <Grid.ColumnDefinitions>
-                                <ColumnDefinition Width="260" />
-                                <ColumnDefinition Width="50" />
-                            </Grid.ColumnDefinitions>
-                            <Label
-                                Grid.Row="0"
-                                Padding="0,-5,0,0 "
-                                Text="Oefening 2"
-                                TextColor="White"
-                                FontSize="17"
-                                FontAttributes="Bold" />
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="260" />
+                            <ColumnDefinition Width="50" />
+                        </Grid.ColumnDefinitions>
+                        <Label
+                            Grid.Row="0"
+                            Padding="0,-5,0,0 "
+                            Text="Oefening 2"
+                            TextColor="White"
+                            FontSize="17"
+                            FontAttributes="Bold" />
 
-                            <Label
-                                Grid.Row="1"
-                                Text="Dit is oefening 2, je kan 'm nu uitvoeren!"
-                                Padding="0,0,0,0" />
+                        <Label
+                            Grid.Row="1"
+                            Text="Dit is oefening 2, je kan 'm nu uitvoeren!"
+                            Padding="0,0,0,0" />
 
-                            <Polygon
-                                Grid.RowSpan="3"
-                                Grid.Column="1"
-                                Points="0,1 8,5, 0,10"
-                                Stroke="Black"
-                                Fill="green"
-                                Scale="3.0"
-                                Margin="40,15,0,10">
-                                <Polygon.GestureRecognizers>
-                                    <TapGestureRecognizer Tapped="PlayButton2Tapped" />
-                                </Polygon.GestureRecognizers>
-                            </Polygon>
-                        </Grid>
-                    </Frame>
+                        <Polygon
+                            Grid.RowSpan="3"
+                            Grid.Column="1"
+                            Points="0,1 8,5, 0,10"
+                            Stroke="Black"
+                            Fill="green"
+                            Scale="3.0"
+                            Margin="40,15,0,10">
+                            <Polygon.GestureRecognizers>
+                                <TapGestureRecognizer Tapped="PlayButton2Tapped" />
+                            </Polygon.GestureRecognizers>
+                        </Polygon>
+                    </Grid>
+                </Frame>
 
-                    <Frame x:Name="FramOefening3"
-                           Padding="10,10,10,10"
-                           BackgroundColor="DarkGrey"
-                           Margin="0,0,0,10">
+                <Frame x:Name="FramOefening3"
+                       Padding="10,10,10,10"
+                       BackgroundColor="DarkGrey"
+                       Margin="0,0,0,10">
 
-                        <Grid>
-                            <Grid.RowDefinitions>
-                                <RowDefinition Height="20" />
-                                <RowDefinition Height="20" />
-                            </Grid.RowDefinitions>
-                            <Grid.ColumnDefinitions>
-                                <ColumnDefinition Width="260" />
-                                <ColumnDefinition Width="50" />
-                            </Grid.ColumnDefinitions>
-                            <Label
-                                Grid.Row="0"
-                                Padding="0,-5,0,0 "
-                                Text="Oefening 3"
-                                TextColor="White"
-                                FontSize="17"
-                                FontAttributes="Bold" />
-                            <Label
-                                Grid.Row="1"
-                                Text="Dit is oefening 3, je kan 'm nu uitvoeren!" />
+                    <Grid>
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="20" />
+                            <RowDefinition Height="20" />
+                        </Grid.RowDefinitions>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="260" />
+                            <ColumnDefinition Width="50" />
+                        </Grid.ColumnDefinitions>
+                        <Label
+                            Grid.Row="0"
+                            Padding="0,-5,0,0 "
+                            Text="Oefening 3"
+                            TextColor="White"
+                            FontSize="17"
+                            FontAttributes="Bold" />
+                        <Label
+                            Grid.Row="1"
+                            Text="Dit is oefening 3, je kan 'm nu uitvoeren!" />
 
-                            <Polygon
-                                x:Name="Playbutton3"
-                                Grid.RowSpan="3"
-                                Grid.Column="1"
-                                Points="0,1 8,5, 0,10"
-                                Stroke="Black"
-                                Fill="green"
-                                Scale="3.0"
-                                Margin="40,15,0,10">
-                                <Polygon.GestureRecognizers>
-                                    <TapGestureRecognizer Tapped="PlayButton3Tapped" />
-                                </Polygon.GestureRecognizers>
-                            </Polygon>
-                        </Grid>
-                    </Frame>
+                        <Polygon
+                            x:Name="Playbutton3"
+                            Grid.RowSpan="3"
+                            Grid.Column="1"
+                            Points="0,1 8,5, 0,10"
+                            Stroke="Black"
+                            Fill="green"
+                            Scale="3.0"
+                            Margin="40,15,0,10">
+                            <Polygon.GestureRecognizers>
+                                <TapGestureRecognizer Tapped="PlayButton3Tapped" />
+                            </Polygon.GestureRecognizers>
+                        </Polygon>
+                    </Grid>
+                </Frame>
 
-                    <Frame x:Name="FrameOefening4"
-                           Padding="10,10,10,10"
-                           BackgroundColor="DarkGrey"
-                           Margin="0,0,0,10">
+                <Frame x:Name="FrameOefening4"
+                       Padding="10,10,10,10"
+                       BackgroundColor="DarkGrey"
+                       Margin="0,0,0,10">
 
-                        <Grid>
-                            <Grid.RowDefinitions>
-                                <RowDefinition Height="20" />
-                                <RowDefinition Height="20" />
-                            </Grid.RowDefinitions>
-                            <Grid.ColumnDefinitions>
-                                <ColumnDefinition Width="260" />
-                                <ColumnDefinition Width="50" />
-                            </Grid.ColumnDefinitions>
-                            <Label
-                                Grid.Row="0"
-                                Padding="0,-5,0,0 "
-                                Text="Oefening 4"
-                                TextColor="White"
-                                FontSize="17"
-                                FontAttributes="Bold" />
-                            <Label
-                                Grid.Row="1"
-                                Text="Dit is oefening 4, je kan 'm nu uitvoeren!" />
+                    <Grid>
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="20" />
+                            <RowDefinition Height="20" />
+                        </Grid.RowDefinitions>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="260" />
+                            <ColumnDefinition Width="50" />
+                        </Grid.ColumnDefinitions>
+                        <Label
+                            Grid.Row="0"
+                            Padding="0,-5,0,0 "
+                            Text="Oefening 4"
+                            TextColor="White"
+                            FontSize="17"
+                            FontAttributes="Bold" />
+                        <Label
+                            Grid.Row="1"
+                            Text="Dit is oefening 4, je kan 'm nu uitvoeren!" />
 
-                            <Polygon
-                                x:Name="Playbutton4"
-                                Grid.RowSpan="3"
-                                Grid.Column="1"
-                                Points="0,1 8,5, 0,10"
-                                Stroke="Black"
-                                Fill="green"
-                                Scale="3.0"
-                                Margin="40,15,0,10">
-                                <Polygon.GestureRecognizers>
-                                    <TapGestureRecognizer Tapped="PlayButton4Tapped" />
-                                </Polygon.GestureRecognizers>
-                            </Polygon>
-                        </Grid>
-                    </Frame>
-                    
-                    <Frame x:Name="FrameOefening5"
-                           Padding="10,10,10,10"
-                           BackgroundColor="DarkGrey"
-                           Margin="0,0,0,10">
+                        <Polygon
+                            x:Name="Playbutton4"
+                            Grid.RowSpan="3"
+                            Grid.Column="1"
+                            Points="0,1 8,5, 0,10"
+                            Stroke="Black"
+                            Fill="green"
+                            Scale="3.0"
+                            Margin="40,15,0,10">
+                            <Polygon.GestureRecognizers>
+                                <TapGestureRecognizer Tapped="PlayButton4Tapped" />
+                            </Polygon.GestureRecognizers>
+                        </Polygon>
+                    </Grid>
+                </Frame>
 
-                        <Grid>
-                            <Grid.RowDefinitions>
-                                <RowDefinition Height="20" />
-                                <RowDefinition Height="20" />
-                            </Grid.RowDefinitions>
-                            <Grid.ColumnDefinitions>
-                                <ColumnDefinition Width="260" />
-                                <ColumnDefinition Width="50" />
-                            </Grid.ColumnDefinitions>
-                            <Label
-                                Grid.Row="0"
-                                Padding="0,-5,0,0 "
-                                Text="Oefening 5"
-                                TextColor="White"
-                                FontSize="17"
-                                FontAttributes="Bold" />
-                            <Label
-                                Grid.Row="1"
-                                Text="Dit is oefening 5, je kan 'm nu uitvoeren!" />
+                <Frame x:Name="FrameOefening5"
+                       Padding="10,10,10,10"
+                       BackgroundColor="DarkGrey"
+                       Margin="0,0,0,10">
 
-                            <Polygon
-                                x:Name="Playbutton5"
-                                Grid.RowSpan="3"
-                                Grid.Column="1"
-                                Points="0,1 8,5, 0,10"
-                                Stroke="Black"
-                                Fill="green"
-                                Scale="3.0"
-                                Margin="40,15,0,10">
-                                <Polygon.GestureRecognizers>
-                                    <TapGestureRecognizer Tapped="PlayButton5Tapped" />
-                                </Polygon.GestureRecognizers>
-                            </Polygon>
-                        </Grid>
-                    </Frame>
+                    <Grid>
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="20" />
+                            <RowDefinition Height="20" />
+                        </Grid.RowDefinitions>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="260" />
+                            <ColumnDefinition Width="50" />
+                        </Grid.ColumnDefinitions>
+                        <Label
+                            Grid.Row="0"
+                            Padding="0,-5,0,0 "
+                            Text="Oefening 5"
+                            TextColor="White"
+                            FontSize="17"
+                            FontAttributes="Bold" />
+                        <Label
+                            Grid.Row="1"
+                            Text="Dit is oefening 5, je kan 'm nu uitvoeren!" />
 
-                </VerticalStackLayout>
-            </ScrollView>
+                        <Polygon
+                            x:Name="Playbutton5"
+                            Grid.RowSpan="3"
+                            Grid.Column="1"
+                            Points="0,1 8,5, 0,10"
+                            Stroke="Black"
+                            Fill="green"
+                            Scale="3.0"
+                            Margin="40,15,0,10">
+                            <Polygon.GestureRecognizers>
+                                <TapGestureRecognizer Tapped="PlayButton5Tapped" />
+                            </Polygon.GestureRecognizers>
+                        </Polygon>
+                    </Grid>
+                </Frame>
+                
+          
+            </VerticalStackLayout>
+        </ScrollView>
     </VerticalStackLayout>
 
 </ContentPage>
