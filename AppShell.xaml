@@ -1,15 +1,32 @@
-<?xml version="1.0" encoding="UTF-8" ?>
+<?xml version="1.0" encoding="UTF-8"?>
+
 <Shell
     x:Class="FocusTravelApp.AppShell"
     xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
     xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
     xmlns:local="clr-namespace:FocusTravelApp"
     Shell.FlyoutBehavior="Disabled"
+    Shell.TabBarIsVisible="True"
     Title="FocusTravelApp">
+    
+    <TabBar x:Name="MainTabBar">
+        <Tab
+            Title="Home"
+            Icon="homeicon.png">
+            <ShellContent
+                Title="Home"
+                ContentTemplate="{DataTemplate local:MainPage}"
+                Route="MainPage" />
+        </Tab>
 
-    <ShellContent
-        Title="Home"
-        ContentTemplate="{DataTemplate local:MainPage}"
-        Route="MainPage" />
+        <Tab
+            Title="Profiel"
+            Icon="user.png">
+            <ShellContent
+                Title="Profile"
+                ContentTemplate="{DataTemplate local:ProfilePage}"
+                Route="ProfilePage" />
+        </Tab>
+    </TabBar>
 
 </Shell>

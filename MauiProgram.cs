@@ -1,5 +1,6 @@
-﻿using System.Reflection;
+using System.Reflection;
 using CommunityToolkit.Maui;
+using FocusTravelApp.ViewModel;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.Logging;
 using Microsoft.Maui.Controls.Compatibility.Platform.Android;
@@ -22,9 +23,12 @@ public static class MauiProgram
             fonts.AddFont("Inter-Regular.ttf", "InterRegular");
             fonts.AddFont("Inter-SemiBold.ttf", "InterSemiBold");
         }).UseMauiCommunityToolkitMediaElement();
+
+        builder.Services.AddSingleton<MainPage>();
+        builder.Services.AddSingleton<MainViewModel>();
         
-        
-        
+        builder.Services.AddTransient<ProfilePage>();
+        builder.Services.AddTransient<ProfileViewModel>();
 #if DEBUG
         builder.Logging.AddDebug();
 #endif

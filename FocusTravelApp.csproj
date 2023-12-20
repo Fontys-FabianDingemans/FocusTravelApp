@@ -39,11 +39,11 @@
     </PropertyGroup>
 
     <PropertyGroup Condition=" '$(Configuration)' == 'Debug' ">
-      <AndroidSupportedAbis>armeabi-v7a;x86;arm64-v8a;x86_64</AndroidSupportedAbis>
-      <AndroidPackageFormat>aab</AndroidPackageFormat>
-      <AndroidUseSharedRuntime>false</AndroidUseSharedRuntime>
-      <EmbedAssembliesIntoApk>True</EmbedAssembliesIntoApk>
-      <AndroidUseAapt2>true</AndroidUseAapt2>
+        <AndroidSupportedAbis>armeabi-v7a;x86;arm64-v8a;x86_64</AndroidSupportedAbis>
+        <AndroidPackageFormat>aab</AndroidPackageFormat>
+        <AndroidUseSharedRuntime>false</AndroidUseSharedRuntime>
+        <EmbedAssembliesIntoApk>True</EmbedAssembliesIntoApk>
+        <AndroidUseAapt2>true</AndroidUseAapt2>
     </PropertyGroup>
 
     <ItemGroup>
@@ -57,9 +57,17 @@
         <MauiImage Include="Resources\Images\*" />
         <MauiImage Update="Resources\Images\chevron_left.svg" Resize="True" BaseSize="64,64" />
         <MauiImage Update="Resources\Images\chevron_right.svg" Resize="True" BaseSize="64,64" />
+        <MauiImage Update="Resources\Images\dotnet_bot.png" Resize="True" BaseSize="300,185" />
+        <MauiImage Update="Resources/Images/profile_3135715.png" Resize="False" BaseSize="512,512"/>
+        <MauiImage Update="Resources/Images/pencil_4223797.png" Resize="False" BaseSize="512,512"/>
+        <MauiImage Update="Resources/Images/homeicon.png" Resize="True" BaseSize="24,24" />
+        <MauiImage Update="Resources/Images/user.png" Resize="True" BaseSize="24,24"/>
 
         <!-- Custom Fonts -->
         <MauiFont Include="Resources\Fonts\*" />
+        <MauiFont Update="Resources/Fonts/Inter-SemiBold.ttf"/>
+        <MauiFont Update="Resources/Fonts/Inter-Regular.ttf"/>
+        
 
         <!-- Raw Assets (also remove the "Resources\Raw" prefix) -->
         <MauiAsset Include="Resources\Raw\**" LogicalName="%(RecursiveDir)%(Filename)%(Extension)" />
@@ -68,6 +76,7 @@
     <ItemGroup>
         <PackageReference Include="Microsoft.Extensions.Configuration.Binder" Version="8.0.0" />
         <PackageReference Include="Microsoft.Extensions.Configuration.Json" Version="8.0.0" />
+        <PackageReference Include="CommunityToolkit.Mvvm" Version="8.2.2" />
         <PackageReference Include="Microsoft.Maui.Controls" Version="$(MauiVersion)" />
         <PackageReference Include="Microsoft.Maui.Controls.Compatibility" Version="$(MauiVersion)" />
         <PackageReference Include="Microsoft.Extensions.Logging.Debug" Version="8.0.0" />
@@ -85,11 +94,7 @@
     </ItemGroup>
 
     <ItemGroup>
-      <Folder Include="Views\" />
-    </ItemGroup>
-
-    <ItemGroup>
-      <None Remove="appsettings.json" />
+        <Folder Include="Views\" />
     </ItemGroup>
 
 </Project>
