@@ -1,0 +1,159 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:toolkit="http://schemas.microsoft.com/dotnet/2022/maui/toolkit"
+             x:Class="FocusTravelApp.SettingsPage"
+             Shell.NavBarIsVisible="False"
+             BackgroundColor="{StaticResource AppBackground}"
+             Padding="5, 30, 5, 0">
+    
+    <ContentPage.Resources>
+        <Style x:Key="InvalidEntryStyle" TargetType="Entry">
+            <Setter Property="TextColor" Value="Red" />
+        </Style>
+        <Style x:Key="ValidEntryStyle" TargetType="Entry">
+            <Setter Property="TextColor" Value="Green" />
+        </Style>
+    </ContentPage.Resources>
+    
+    <VerticalStackLayout
+        Padding="25,0"
+        Spacing="20">
+        
+        <Frame
+            BackgroundColor="{StaticResource Gray500}"
+            BorderColor="Transparent"
+            Padding="10, 8"
+            Margin="0,0,0,15"
+            >
+            <!-- TODO: Add 'back to account' action -->
+            
+            <Grid>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="30" />
+                    <ColumnDefinition />
+                </Grid.ColumnDefinitions>
+                
+                <Image 
+                    Grid.Column="0"
+                    Source="chevron_left.svg"
+                    HeightRequest="30" />
+                <Label
+                    Grid.Column="1"
+                    FontSize="25"
+                    TextColor="White"
+                    HorizontalTextAlignment="End"
+                    Text="Instellingen" />
+                
+            </Grid>
+        </Frame>
+        
+        <VerticalStackLayout>
+            <Label
+                FontSize="20"
+                TextColor="White"
+                Text="Pauze reminder:" />
+            
+            <Border
+                Stroke="White"
+                StrokeThickness="1"
+                Padding="2, -4"
+                >
+                <Entry
+                    Keyboard="Numeric"
+                    FontSize="18"
+                    TextColor="White"
+                    TextChanged="BreakReminder_OnTextChanged"
+                    x:Name="BreakReminderEntry"
+                >
+                    <Entry.Behaviors>
+                        <toolkit:NumericValidationBehavior 
+                            InvalidStyle="{StaticResource InvalidEntryStyle}"
+                            ValidStyle="{StaticResource ValidEntryStyle}"
+                            Flags="ValidateOnValueChanged"
+                            MinimumValue="1"
+                            MaximumValue="120"
+                            MaximumDecimalPlaces="0" />
+                    </Entry.Behaviors>
+                </Entry>
+            </Border>
+            
+            <Label
+                FontSize="12"
+                TextColor="White"
+                Text="Noteer tijd in minuten! (Tussen 1 en 120)" />
+            
+        </VerticalStackLayout>
+        
+        <VerticalStackLayout>
+            <Label
+                FontSize="20"
+                TextColor="White"
+                Text="Drink reminder:" />
+            
+            <Border
+                Stroke="White"
+                StrokeThickness="1"
+                Padding="2, -4"
+            >
+                <Entry
+                    Keyboard="Numeric"
+                    FontSize="18"
+                    TextColor="White"
+                    TextChanged="DrinkReminder_OnTextChanged"
+                    x:Name="DrinkReminderEntry"
+                >
+                    <Entry.Behaviors>
+                        <toolkit:NumericValidationBehavior 
+                            InvalidStyle="{StaticResource InvalidEntryStyle}"
+                            ValidStyle="{StaticResource ValidEntryStyle}"
+                            Flags="ValidateOnValueChanged"
+                            MinimumValue="1"
+                            MaximumValue="120"
+                            MaximumDecimalPlaces="0" />
+                    </Entry.Behaviors>
+                </Entry>
+            </Border>
+            
+            <Label
+                FontSize="12"
+                TextColor="White"
+                Text="Noteer tijd in minuten! (Tussen 1 en 120)" />
+            
+        </VerticalStackLayout>
+        
+        <VerticalStackLayout>
+            <Label
+                FontSize="20"
+                TextColor="White"
+                Text="Apparaat verbinden:" />
+            
+            <HorizontalStackLayout>
+                <Label
+                    FontSize="16"
+                    TextColor="White"
+                    Text="Status:" />
+                <Label
+                    FontSize="16"
+                    TextColor="White"
+                    x:Name="BluetoothStatusLabel"
+                    Text="Niet verbonden" />
+            </HorizontalStackLayout>
+            
+            <Button
+                Margin="0, 10, 0, 0"
+                BackgroundColor="#599F00"
+                Text="Zoek naar apparaat"
+                FontSize="18"
+                WidthRequest="200"
+                HorizontalOptions="Start"
+                Clicked="SearchDeviceButton_OnClicked">
+                
+            </Button>
+            
+        </VerticalStackLayout>
+        
+    </VerticalStackLayout>
+    
+</ContentPage>
