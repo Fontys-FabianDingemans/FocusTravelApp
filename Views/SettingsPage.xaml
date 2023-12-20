@@ -24,11 +24,13 @@
         <Frame
             BackgroundColor="{StaticResource Gray500}"
             BorderColor="Transparent"
-            Padding="10, 8"
+            Padding="10, 5"
             Margin="0,0,0,15"
+            HeightRequest="45"
             >
-            <!-- TODO: Add 'back to account' action -->
-            
+            <Frame.GestureRecognizers>
+            <TapGestureRecognizer Tapped="ClickedOnGoBackToProfile"/>
+            </Frame.GestureRecognizers>
             <Grid>
                 <Grid.ColumnDefinitions>
                     <ColumnDefinition Width="30" />
@@ -38,7 +40,7 @@
                 <Image 
                     Grid.Column="0"
                     Source="chevron_left.svg"
-                    HeightRequest="30" />
+                    HeightRequest="30"/>
                 <Label
                     Grid.Column="1"
                     FontSize="25"

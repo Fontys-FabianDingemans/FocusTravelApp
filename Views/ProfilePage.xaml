@@ -124,22 +124,32 @@
                 </Grid>
             </Frame>
 
-            <Frame BackgroundColor="DarkGray"
+            <Frame BackgroundColor="{StaticResource Gray500}"
                    BorderColor="Transparent"
                    HeightRequest="45"
-                   Padding="0"
-                   Margin="5,0,5,30 ">
+                   Padding="10, 5"
+                   Margin="0,0,0,15">
+                <Frame.GestureRecognizers>
+                    <TapGestureRecognizer Tapped="ClickedOnSettings"/>
+                </Frame.GestureRecognizers>
                 <Grid>
                     <Grid.ColumnDefinitions>
-                        <ColumnDefinition Width="300" />
-                        <ColumnDefinition Width="100" />
+                        <ColumnDefinition />
+                        <ColumnDefinition Width="30" />
                     </Grid.ColumnDefinitions>
-                    <Label Grid.Column="0" 
-                    Text="Instellingen"
-                    TextColor="White"
-                    FontSize="23"
-                    Margin="20,5,0,0"
-                       />
+                
+                    <Label
+                        Grid.Column="0"
+                        FontSize="25"
+                        TextColor="White"
+                        HorizontalTextAlignment="Start"
+                        Text="Instellingen" />
+                    
+                    <Image 
+                        Grid.Column="1"
+                        Source="chevron_right.svg"
+                        HeightRequest="30" />
+                
                 </Grid>
                 
 
