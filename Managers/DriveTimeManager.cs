@@ -32,10 +32,21 @@ public class DriveTimeManager
                     
                     var distanceInKm = ((decimal) this._currentDriveDistanceInMeters) / 1000;
                     
-                    Debug.WriteLine(this._currentDriveDistanceInMeters);
-                    Debug.WriteLine(distanceInKm);
-                    
                     this._setDriveDistanceTextCallback(string.Format("{0:0.0}", distanceInKm) + " KM");
+                }
+
+                var breakReminderInterval = Int32.Parse(AppSettings.BreakReminderInterval);
+                if (_currentDriveTime % (breakReminderInterval * 60) == 0)
+                {
+                    // TODO: Show popup message
+                    Debug.WriteLine("Break reminder triggered");
+                }
+                
+                var drinkReminderInterval = Int32.Parse(AppSettings.DrinkReminderInterval);
+                if (_currentDriveTime % (drinkReminderInterval * 60) == 0)
+                {
+                    // TODO: Show popup message
+                    Debug.WriteLine("Drink reminder triggered");
                 }
                 
                 Thread.Sleep(1000);
