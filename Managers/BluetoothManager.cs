@@ -89,7 +89,7 @@ public class BluetoothManager
                 
                 if(deviceName == null) return;
                 
-                if (deviceName == "FocusTravelTest2")
+                if (deviceName == "FocusTravel")
                 {
                     // Connect to to device
                     adapter.ConnectToDeviceAsync(device);
