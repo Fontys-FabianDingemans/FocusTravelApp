@@ -20,12 +20,17 @@
 
         <Tab
             Title="Profiel"
-            Icon="user.png">
+            Icon="user.png"
+            >
+            
             <ShellContent
                 Title="Profile"
                 ContentTemplate="{DataTemplate local:ProfilePage}"
-                Route="ProfilePage" />
+                Route="ProfilePage" 
+                />
+                
         </Tab>
+        
     </TabBar>
 
 </Shell>

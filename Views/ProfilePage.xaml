@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
 
 <ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
-             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-             x:Class="FocusTravelApp.ProfilePage"
-             BackgroundColor="{StaticResource AppBackground}"
-             Padding="15, 30, 15, 0"
-             Shell.NavBarIsVisible="False">
+                xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+                x:Class="FocusTravelApp.ProfilePage"
+                BackgroundColor="{StaticResource AppBackground}"
+                Padding="15, 30, 15, 0"
+                Shell.NavBarIsVisible="False">
 
 
     <ContentPage.Content>
@@ -71,11 +71,11 @@
             </Frame>
 
             <Frame BackgroundColor="MediumSeaGreen"
-                   BorderColor="MediumSeaGreen"
-                   HeightRequest="90"
-                   Margin="5,0,5,20 "
-                   Padding="0"
-                   WidthRequest="370">
+                    BorderColor="MediumSeaGreen"
+                    HeightRequest="90"
+                    Margin="5,0,5,20 "
+                    Padding="0"
+                    WidthRequest="370">
                 <Grid>
                     <Grid.ColumnDefinitions>
                         <ColumnDefinition Width="110" />
@@ -83,10 +83,10 @@
                     </Grid.ColumnDefinitions>
 
                     <Label Text="Health Score"
-                           FontAttributes="Bold"
-                           TextColor="White"
-                           FontSize="28"
-                           Padding="10,5,0,0 " />
+                            FontAttributes="Bold"
+                            TextColor="White"
+                            FontSize="28"
+                            Padding="10,5,0,0 " />
 
                     <Label
                         Text="0"
@@ -97,18 +97,18 @@
                         HorizontalOptions="End"
                         VerticalOptions="CenterAndExpand"
                         Grid.Column="1"
-                        Margin="0,0,20,0"/>
+                        Margin="0,0,20,0" />
 
                 </Grid>
 
             </Frame>
 
             <Frame BackgroundColor="MediumSlateBlue"
-                   BorderColor="MediumSlateBlue"
-                   HeightRequest="90"
-                   WidthRequest="370"
-                   Margin="5,0,5,30 "
-                   Padding="0">
+                    BorderColor="MediumSlateBlue"
+                    HeightRequest="90"
+                    WidthRequest="370"
+                    Margin="5,0,5,30 "
+                    Padding="0">
 
                 <Grid>
                     <Grid.ColumnDefinitions>
@@ -117,10 +117,10 @@
                     </Grid.ColumnDefinitions>
 
                     <Label Text="Slaap Score"
-                           TextColor="White"
-                           FontAttributes="Bold"
-                           FontSize="28"
-                           Padding="10,5,0,0 " />
+                            TextColor="White"
+                            FontAttributes="Bold"
+                            FontSize="28"
+                            Padding="10,5,0,0 " />
 
                     <Label
                         Text="0"
@@ -130,16 +130,15 @@
                         HorizontalOptions="End"
                         VerticalOptions="CenterAndExpand"
                         Grid.Column="1"
-                        Margin="0,0,20,0"
-                         />
+                        Margin="0,0,20,0" />
                 </Grid>
             </Frame>
 
             <Frame BackgroundColor="{StaticResource Gray500}"
-                   BorderColor="Transparent"
-                   HeightRequest="45"
-                   Padding="10, 5"
-                   Margin="0,0,0,15">
+                    BorderColor="Transparent"
+                    HeightRequest="45"
+                    Padding="10, 5"
+                    Margin="0,0,0,15">
                 <Frame.GestureRecognizers>
                     <TapGestureRecognizer Tapped="ClickedOnSettings" />
                 </Frame.GestureRecognizers>

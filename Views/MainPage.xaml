@@ -121,7 +121,7 @@
                 <VerticalStackLayout>
                     <Frame x:Name="FrameOefening1"
                         Padding="10,10,0,8"
-                        BackgroundColor="DarkGrey"
+                        BackgroundColor="DimGrey"
                         Margin="0,0,0,10"
                         >
                         <Grid>
@@ -144,7 +144,8 @@
                         <Label
                             Grid.Column="0"
                             Grid.Row="1"
-                            Text="Dit is oefening 1, je kan 'm nu uitvoeren!" />
+                            Text="Dit is oefening 1, je kan 'm nu uitvoeren!" 
+                            TextColor="White"/>
 
                         <Polygon
                             Grid.RowSpan="3"
@@ -165,7 +166,7 @@
 
                     <Frame x:Name="FrameOefening2"
                         Padding="10,10,0,8"
-                        BackgroundColor="DarkGrey"
+                        BackgroundColor="DimGrey"
                         Margin="0,0,0,10"
                         >
                         <Grid>
@@ -189,7 +190,8 @@
                         <Label
                             Grid.Row="1"
                             Text="Dit is oefening 2, je kan 'm nu uitvoeren!"
-                            Padding="0,0,0,0" />
+                            Padding="0,0,0,0" 
+                            TextColor="White"/>
 
                         <Polygon
                             Grid.RowSpan="3"
@@ -208,7 +210,7 @@
 
                 <Frame x:Name="FramOefening3"
                     Padding="10,10,10,10"
-                    BackgroundColor="DarkGrey"
+                    BackgroundColor="DimGrey"
                     Margin="0,0,0,10"
                     >
 
@@ -230,7 +232,8 @@
                             FontAttributes="Bold" />
                         <Label
                             Grid.Row="1"
-                            Text="Dit is oefening 3, je kan 'm nu uitvoeren!" />
+                            Text="Dit is oefening 3, je kan 'm nu uitvoeren!" 
+                            TextColor="White"/>
 
                         <Polygon
                             x:Name="Playbutton3"
@@ -250,7 +253,7 @@
 
                     <Frame x:Name="FrameOefening4"
                         Padding="10,10,10,10"
-                        BackgroundColor="DarkGrey"
+                        BackgroundColor="DimGrey"
                         Margin="0,0,0,10"
                         >
 
@@ -272,7 +275,8 @@
                             FontAttributes="Bold" />
                         <Label
                             Grid.Row="1"
-                            Text="Dit is oefening 4, je kan 'm nu uitvoeren!" />
+                            Text="Dit is oefening 4, je kan 'm nu uitvoeren!" 
+                            TextColor="White"/>
 
                             <Polygon
                                 x:Name="Playbutton4"
@@ -292,7 +296,7 @@
                     
                     <Frame x:Name="FrameOefening5"
                         Padding="10,10,10,10"
-                        BackgroundColor="DarkGrey"
+                        BackgroundColor="DimGrey"
                         Margin="0,0,0,10"
                         >
 
@@ -314,7 +318,8 @@
                             FontAttributes="Bold" />
                         <Label
                             Grid.Row="1"
-                            Text="Dit is oefening 5, je kan 'm nu uitvoeren!" />
+                            Text="Dit is oefening 5, je kan 'm nu uitvoeren!"
+                            TextColor="White"/>
 
                         <Polygon
                             x:Name="Playbutton5"

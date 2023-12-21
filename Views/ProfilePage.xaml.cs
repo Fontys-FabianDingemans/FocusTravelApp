@@ -27,5 +27,4 @@ public partial class ProfilePage : ContentPage
         Navigation.PushAsync(new SettingsPage(SettingsViewModel));
     }
     
-    
 }
