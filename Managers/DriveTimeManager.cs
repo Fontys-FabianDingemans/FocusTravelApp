@@ -11,11 +11,13 @@ public class DriveTimeManager
     
     private readonly Action<string> _setDriveTimeTextCallback;
     private readonly Action<string> _setDriveDistanceTextCallback;
+    private readonly Action<string> _showDrinkPopup;
         
-    public DriveTimeManager(Action<string> setDriveTimeTextCallback, Action<string> setDriveDistanceTextCallback)
+    public DriveTimeManager(Action<string> setDriveTimeTextCallback, Action<string> setDriveDistanceTextCallback, Action<string> showDrinkPopup)
     {
         this._setDriveTimeTextCallback = setDriveTimeTextCallback;
         this._setDriveDistanceTextCallback = setDriveDistanceTextCallback;
+        this._showDrinkPopup = showDrinkPopup;
         
         
         Thread driveTimeThread = new (() => {
@@ -38,14 +40,13 @@ public class DriveTimeManager
                 var breakReminderInterval = Int32.Parse(AppSettings.BreakReminderInterval);
                 if (_currentDriveTime % (breakReminderInterval * 60) == 0)
                 {
-                    // TODO: Show popup message
                     Debug.WriteLine("Break reminder triggered");
                 }
                 
                 var drinkReminderInterval = Int32.Parse(AppSettings.DrinkReminderInterval);
                 if (_currentDriveTime % (drinkReminderInterval * 60) == 0)
                 {
-                    // TODO: Show popup message
+                    this._showDrinkPopup("");
                     Debug.WriteLine("Drink reminder triggered");
                 }
                 

@@ -336,8 +336,6 @@
                         </Polygon>
                     </Grid>
                 </Frame>
-                
-            
             </VerticalStackLayout>
         </ScrollView>
     </VerticalStackLayout>

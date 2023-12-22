@@ -1,5 +1,7 @@
 ﻿using System.Diagnostics;
+using CommunityToolkit.Maui.Views;
 using FocusTravelApp.ViewModel;
+using FocusTravelApp.Views;
 
 namespace FocusTravelApp;
 
@@ -13,7 +15,7 @@ public partial class MainPage : ContentPage
     public MainPage()
     {
         InitializeComponent();
-        this._driveTimeManager = new DriveTimeManager(this.UpdateDriveTimeText, this.UpdateDriveDistanceText);
+        this._driveTimeManager = new DriveTimeManager(this.UpdateDriveTimeText, this.UpdateDriveDistanceText, this.ShowDrinkPopUpCallBack);
         this._bluetoothManager = new BluetoothManager();
     }
 
@@ -74,4 +76,8 @@ public partial class MainPage : ContentPage
         Debug.WriteLine("Play button 5 tapped!");
     }
     
+    private void ShowDrinkPopUpCallBack(string text)
+    {
+        this.ShowPopup(new DrinkReminderPopUp());
+    }
 }
