@@ -78,6 +78,6 @@ public partial class MainPage : ContentPage
     
     private void ShowDrinkPopUpCallBack(string text)
     {
-        this.ShowPopup(new DrinkReminderPopUp());
+        Application.Current?.Dispatcher.Dispatch(() => { this.ShowPopup(new DrinkReminderPopUp()); });
     }
 }
