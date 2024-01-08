@@ -1,6 +1,5 @@
 ﻿using System.Diagnostics;
 using CommunityToolkit.Maui.Views;
-using FocusTravelApp.ViewModel;
 using FocusTravelApp.Views;
 
 namespace FocusTravelApp;
@@ -17,6 +16,42 @@ public partial class MainPage : ContentPage
         InitializeComponent();
         this._driveTimeManager = new DriveTimeManager(this.UpdateDriveTimeText, this.UpdateDriveDistanceText, this.ShowDrinkPopUpCallBack);
         this._bluetoothManager = new BluetoothManager();
+        
+        Device.StartTimer(TimeSpan.FromSeconds(1), () =>
+        {
+            UpdateTimeLabel();
+            return true;
+        });
+    }
+
+    private void UpdateTimeLabel()
+    {
+        DateTime currentTime = DateTime.Now;
+        
+        if (currentTime.Hour >= 5 && currentTime.Hour <= 12)
+        {
+            LabelTijd.Text = "Goedemorgen, Rijd veilig!";
+        }
+
+        else if (currentTime.Hour >= 13 && currentTime.Hour <= 17)
+        {
+            LabelTijd.Text = "Goedemiddag, Rijd voorzichtig!";
+        }
+        
+        else if (currentTime.Hour >= 17 && currentTime.Hour <= 24)
+        {
+            LabelTijd.Text = "Goedenavond, Fijne reis!!";
+        }
+        
+        else if (currentTime.Hour >= 1 && currentTime.Hour <= 5)
+        {
+            LabelTijd.Text = "Goedenacht, Veilige reis!";
+        }
+        
+        else
+        {
+            LabelTijd.Text = $"Huidige tijd: {currentTime.ToString("HH:mm:ss")}";
+        }
     }
 
     private void StartStopButtonTapped(object sender, TappedEventArgs args)
@@ -80,4 +115,6 @@ public partial class MainPage : ContentPage
     {
         Application.Current?.Dispatcher.Dispatch(() => { this.ShowPopup(new DrinkReminderPopUp()); });
     }
+    
+    
 }

@@ -99,7 +99,8 @@
             Margin="0,25,0,0">
             <VerticalStackLayout>
                 <Label
-                    Text="Reminder"
+                    x:Name="LabelTijd"
+                    Text="PlaceHolder"
                     TextColor="White"
                     FontSize="20"
                     FontAttributes="Bold" />
@@ -159,8 +160,6 @@
                                 <TapGestureRecognizer Tapped="PlayButton1Tapped" />
                             </Polygon.GestureRecognizers>
                         </Polygon>
-
-
                     </Grid>
                 </Frame>
 
