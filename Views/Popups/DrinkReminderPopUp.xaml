@@ -12,22 +12,46 @@
                TextColor="Black" 
                FontSize="30"
                HorizontalOptions="Center"
-               VerticalOptions="Start"/>
-        <Frame
-            HeightRequest="500"
-            WidthRequest="300"
-            BorderColor="Transparent">
-
-            <Button
+               VerticalOptions="Start"
+               Padding="0,10,0,0"
+               FontFamily="Inter-Regular.SemiBold"/>
+        
+        <Grid>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="400" />
+                <RowDefinition Height="80" />
+            </Grid.RowDefinitions>
+            
+            <Label Text="Vergeet geen water te drinken!" 
+                   TextColor="Black"
+                   ZIndex="1"
+                   FontFamily="Inter-Regular.ttf"
+                   Grid.Row="0"
+                   HorizontalTextAlignment="Center"
+                   VerticalOptions="Start"
+                   Padding="0,5,0,5"
+                   FontAttributes="Italic"/>
+            <Frame Grid.Row="0"
+                   BorderColor="Transparent"
+                   ZIndex="0">
+                <Image
+                    Source="waterbo.png"
+                    Scale="1">
+                </Image>
+        </Frame>
+            <Frame Grid.Row="1"
+                   BorderColor="Transparent">
+                <Button
                 BackgroundColor="Black"
+                BorderColor="Transparent"
                 HeightRequest="40"
                 WidthRequest="100"
                 Text="Close"
                 Clicked="CloseButtonDrinkReminderClicked" 
                 HorizontalOptions="Center"
                 VerticalOptions="End"/>
-        </Frame>
-
+            </Frame>
+</Grid>
 
     </VerticalStackLayout>
 </mct:Popup>
