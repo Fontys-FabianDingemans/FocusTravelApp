@@ -147,10 +147,11 @@
             <Button
                 Margin="0, 10, 0, 0"
                 BackgroundColor="#599F00"
-                Text="Zoek naar apparaat"
+                Text="Selecteer apparaat"
                 FontSize="18"
                 WidthRequest="200"
                 HorizontalOptions="Start"
+                x:Name="SearchDeviceButton"
                 Clicked="SearchDeviceButton_OnClicked">
                 
             </Button>

@@ -9,13 +9,11 @@ using FocusTravelApp.Managers;
 public partial class MainPage : ContentPage
 {
     private readonly DriveTimeManager _driveTimeManager;
-    private readonly BluetoothManager _bluetoothManager;
 
     public MainPage()
     {
         InitializeComponent();
         this._driveTimeManager = new DriveTimeManager(this.UpdateDriveTimeText, this.UpdateDriveDistanceText, this.ShowDrinkPopUpCallBack);
-        this._bluetoothManager = new BluetoothManager();
         
         Device.StartTimer(TimeSpan.FromSeconds(1), () =>
         {

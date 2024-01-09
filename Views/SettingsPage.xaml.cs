@@ -36,12 +36,14 @@ public partial class SettingsPage : ContentPage
         _bluetoothManager.FindDeviceAndConnect(this.UpdateBluetoothStatusText);
     }
 
-    private void UpdateBluetoothStatusText(string text, Color? color)
+    private void UpdateBluetoothStatusText(string text, Color? color, bool disableButton = false)
     {
         Application.Current?.Dispatcher.Dispatch(() =>
         {
             BluetoothStatusLabel.Text = text;
             BluetoothStatusLabel.TextColor = color ?? Color.FromRgb(255, 255, 255);
+            //SearchDeviceButton.IsEnabled = !disableButton;
+            Debug.WriteLine("Disable button: " + disableButton);
         });
     }
     
