@@ -56,6 +56,12 @@ public class BluetoothManager
             var adapter = CrossBluetoothLE.Current.Adapter;
 
             this._pairedDevices = adapter.BondedDevices;
+            if(this._pairedDevices == null){
+                Debug.WriteLine("No paired devices or bluetooth not enabled/supported");
+                this.isRunning = false;
+                continue;
+            }
+            
             foreach (var device in this._pairedDevices)
             {
                 var deviceName = device.Name;
@@ -73,7 +79,7 @@ public class BluetoothManager
     {
         Thread t = new Thread(() =>
         {
-            if (this.CheckPermission().Result) return;
+            if (!this.CheckPermission().Result) return;
             bool deviceFound = false;
         
             var ble = CrossBluetoothLE.Current;
@@ -81,13 +87,16 @@ public class BluetoothManager
             
             setStatusTextCallback("Searching...", Color.FromRgb(255, 255, 255));
         
-            this._pairedDevices = adapter.BondedDevices;
+            Debug.WriteLine("Finding listed devices");
+            this._pairedDevices = adapter.ConnectedDevices;
+            
+            Debug.WriteLine($"Found {this._pairedDevices.Count} devices");
+            
             foreach (var device in this._pairedDevices)
             {
                 var deviceName = device.Name;
-                var deviceId = device.Id;
                 
-                if(deviceName == null) return;
+                Debug.WriteLine($"Paired device: {deviceName}");
                 
                 if (deviceName == "FocusTravel")
                 {
@@ -95,15 +104,17 @@ public class BluetoothManager
                     adapter.ConnectToDeviceAsync(device);
                     deviceFound = true;
                     setStatusTextCallback("Device connected", Color.FromRgb(0, 255, 0));
+                    Debug.WriteLine("Device connected");
                 }
-                
-                Debug.WriteLine($"Paired device: {deviceName}");
             }
 
             if (!deviceFound)
             {
                 setStatusTextCallback("Device not found", Color.FromRgb(255, 0, 0));
+                Debug.WriteLine("Device not found");
             }
+            
+            Debug.WriteLine("Finished finding devices");
         });
         t.Start();
     }
