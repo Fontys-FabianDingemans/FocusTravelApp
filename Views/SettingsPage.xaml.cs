@@ -13,10 +13,10 @@ public partial class SettingsPage : ContentPage
     {
         InitializeComponent();
         
-        _bluetoothManager = new BluetoothManager();
+        _bluetoothManager = new BluetoothManager(this.UpdateBluetoothStatusText);
 
-        BreakReminderEntry.Text = AppSettings.BreakReminderInterval.ToString();
-        DrinkReminderEntry.Text = AppSettings.DrinkReminderInterval.ToString();
+        BreakReminderEntry.Text = AppSettings.BreakReminderInterval;
+        DrinkReminderEntry.Text = AppSettings.DrinkReminderInterval;
     }
 
     private void BreakReminder_OnTextChanged(object? sender, TextChangedEventArgs e)
@@ -33,17 +33,16 @@ public partial class SettingsPage : ContentPage
     {
         Debug.WriteLine("SearchDeviceButton_OnClicked");
         
-        _bluetoothManager.FindDeviceAndConnect(this.UpdateBluetoothStatusText);
+        _bluetoothManager.FindDeviceAndConnect();
     }
 
-    private void UpdateBluetoothStatusText(string text, Color? color, bool disableButton = false)
+    private void UpdateBluetoothStatusText(string text, Color? color, bool? buttonEnabled)
     {
         Application.Current?.Dispatcher.Dispatch(() =>
         {
             BluetoothStatusLabel.Text = text;
             BluetoothStatusLabel.TextColor = color ?? Color.FromRgb(255, 255, 255);
-            //SearchDeviceButton.IsEnabled = !disableButton;
-            Debug.WriteLine("Disable button: " + disableButton);
+            SearchDeviceButton.IsEnabled = buttonEnabled ?? true;
         });
     }
     

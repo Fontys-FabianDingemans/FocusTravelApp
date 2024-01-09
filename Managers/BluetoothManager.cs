@@ -7,42 +7,71 @@ namespace FocusTravelApp.Managers;
 public class BluetoothManager
 {
     
-    public void FindDeviceAndConnect(Action<string, Color, bool> setStatusTextCallback)
+    private BluetoothClient _client;
+    private Action<string, Color?, bool?> _setStatusTextCallback;
+
+    public BluetoothManager(Action<string, Color?, bool?> setStatusTextCallback)
     {
-        Thread t = new Thread(async () =>
+        _client = new BluetoothClient();
+        _setStatusTextCallback = setStatusTextCallback;
+        
+        Init();
+    }
+
+    private void Init()
+    {
+        if (_client.Connected)
         {
-            String DeviceName = "FocusTravel";
-            
-            setStatusTextCallback("Selecteer apparaat...", Color.FromRgb(255, 114, 0), true);
-            Debug.WriteLine("Opening BT picker...");
+            _setStatusTextCallback($"Verbonden", Color.FromRgb(0, 255, 0), false);
+        }
+        else
+        {
+            _setStatusTextCallback("Niet verbonden", Color.FromRgb(255, 255, 255), true);
+        }
+        
+        
+        
+    }
     
-            BluetoothClient client = new BluetoothClient();
-            BluetoothDevicePicker picker = new BluetoothDevicePicker();
-            BluetoothDeviceInfo device = await picker.PickSingleDeviceAsync();
+    public void FindDeviceAndConnect()
+    {
+        var t = new Thread(async () =>
+        {
+            _setStatusTextCallback("Selecteer apparaat...", Color.FromRgb(255, 114, 0), false);
             
-            Debug.WriteLine($"Selected device: {device.DeviceName}");
+            var picker = new BluetoothDevicePicker();
+            var device = await picker.PickSingleDeviceAsync();
             
-            client.Connect(device.DeviceAddress, BluetoothService.SerialPort);
+            _setStatusTextCallback($"Verbinden met {device.DeviceName}...", Color.FromRgb(255, 114, 0), false);
+            
+            await _client.ConnectAsync(device.DeviceAddress, BluetoothService.SerialPort);
 
             if (!device.Connected)
             {
-                setStatusTextCallback("Fout bij verbinden", Color.FromRgb(255, 0, 0), true);
+                _setStatusTextCallback("Fout bij verbinden", Color.FromRgb(255, 0, 0), true);
                 return;
             }
-            setStatusTextCallback("Verbonden", Color.FromRgb(0, 255, 0), true);
+            _setStatusTextCallback($"Verbonden met {device.DeviceName}", Color.FromRgb(0, 255, 0), false);
             
             // Send and receive data
-            var stream = client.GetStream();
+            var stream = _client.GetStream();
+            
+            // Write data
+            var sw = new StreamWriter(stream, System.Text.Encoding.ASCII);
+            await sw.WriteLineAsync("Phone connected!\r\n\r\n");
+            sw.Close();
             
             // Read data
-            StreamReader sr = new StreamReader(stream, System.Text.Encoding.ASCII);
-            string line = sr.ReadLine();
-            Debug.WriteLine(line);
-            sr.Close();
+            var sr = new StreamReader(stream, System.Text.Encoding.ASCII);
             
-            StreamWriter sw = new StreamWriter(stream, System.Text.Encoding.ASCII);
-            sw.WriteLine("Hello world!\r\n\r\n");
-            sw.Close();
+            while (device.Connected)
+            {
+                var line = await sr.ReadLineAsync();
+                Debug.WriteLine(line is { Length: > 0 } ? line : "No data received");
+                Thread.Sleep(100);
+            }
+            
+            sr.Close();
             
         });
         t.Start();
