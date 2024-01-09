@@ -13,7 +13,7 @@ public partial class MainPage : ContentPage
     public MainPage()
     {
         InitializeComponent();
-        this._driveTimeManager = new DriveTimeManager(this.UpdateDriveTimeText, this.UpdateDriveDistanceText, this.ShowDrinkPopUpCallBack);
+        this._driveTimeManager = new DriveTimeManager(this.UpdateDriveTimeText, this.UpdateDriveDistanceText, this.ShowDrinkPopUpCallBack, this.ShowPauzePopUpCallBack);
         
         Device.StartTimer(TimeSpan.FromSeconds(1), () =>
         {
@@ -111,8 +111,11 @@ public partial class MainPage : ContentPage
     
     private void ShowDrinkPopUpCallBack(string text)
     {
-        Application.Current?.Dispatcher.Dispatch(() => { this.ShowPopup(new DrinkReminderPopUp()); });
+        Application.Current?.Dispatcher.Dispatch(() => { this.ShowPopupAsync(new DrinkReminderPopUp()); });
     }
-    
-    
+
+    private void ShowPauzePopUpCallBack(string text)
+    {
+        Application.Current?.Dispatcher.Dispatch(() => { this.ShowPopupAsync(new PauzeReminderPopUp()); });
+    }
 }

@@ -62,7 +62,8 @@
         <MauiImage Update="Resources/Images/pencil_4223797.png" Resize="False" BaseSize="512,512"/>
         <MauiImage Update="Resources/Images/homeicon.png" Resize="True" BaseSize="24,24" />
         <MauiImage Update="Resources/Images/user.png" Resize="True" BaseSize="24,24"/>
-        <MauiImage Update="Resources/Images/WaterBO.png" Resize="True" BaseSize="320,426"/>
+        <MauiImage Update="Resources/Images/waterbo.png" Resize="True" BaseSize="320,426"/>
+        <MauiImage Update="Resources/Images/coffee.png" Resize="True" BaseSize="300,300"/>
 
         <!-- Custom Fonts -->
         <MauiFont Include="Resources\Fonts\*" />
@@ -111,6 +112,9 @@
       <MauiXaml Update="Views\Popups\DrinkReminderPopUp.xaml">
         <SubType>Designer</SubType>
       </MauiXaml>
+      <MauiXaml Update="Views\Popups\PauzeReminderPopUp.xaml">
+        <SubType>Designer</SubType>
+      </MauiXaml>
     </ItemGroup>
 
     <ItemGroup>
@@ -128,6 +132,10 @@
       </Compile>
       <Compile Update="Views\Popups\DrinkReminderPopUp.xaml.cs">
         <DependentUpon>DrinkReminderPopUp.xaml</DependentUpon>
+        <SubType>Code</SubType>
+      </Compile>
+      <Compile Update="Views\Popups\PauzeReminderPopUp.xaml.cs">
+        <DependentUpon>PauzeReminderPopUp.xaml</DependentUpon>
         <SubType>Code</SubType>
       </Compile>
     </ItemGroup>

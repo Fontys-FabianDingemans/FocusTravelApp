@@ -105,7 +105,7 @@
                     FontSize="20"
                     FontAttributes="Bold" />
                 <Label
-                    Text="Vergeet geen water te drinken"
+                    Text="Leef als een gezonde chauffeur!"
                     TextColor="White" />
 
             </VerticalStackLayout>

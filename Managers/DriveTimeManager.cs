@@ -1,4 +1,5 @@
 using System.Diagnostics;
+using CommunityToolkit.Maui.Core;
 using FocusTravelApp.Enums;
 
 namespace FocusTravelApp.Managers;
@@ -12,12 +13,14 @@ public class DriveTimeManager
     private readonly Action<string> _setDriveTimeTextCallback;
     private readonly Action<string> _setDriveDistanceTextCallback;
     private readonly Action<string> _showDrinkPopup;
+    private readonly Action<string> _showPauzePopup;
         
-    public DriveTimeManager(Action<string> setDriveTimeTextCallback, Action<string> setDriveDistanceTextCallback, Action<string> showDrinkPopup)
+    public DriveTimeManager(Action<string> setDriveTimeTextCallback, Action<string> setDriveDistanceTextCallback, Action<string> showDrinkPopup, Action<String> showPauzePopup)
     {
         this._setDriveTimeTextCallback = setDriveTimeTextCallback;
         this._setDriveDistanceTextCallback = setDriveDistanceTextCallback;
         this._showDrinkPopup = showDrinkPopup;
+        this._showPauzePopup = showPauzePopup;
         
         
         Thread driveTimeThread = new (() => {
@@ -27,9 +30,9 @@ public class DriveTimeManager
                 this._currentDriveTime++;
                 this._setDriveTimeTextCallback(FormatSecsToHms(_currentDriveTime));
                 
-                if(new Random().Next(0, 100) < 50)//<-- Chance percentage
+                if(new Random().Next(0, 100) < 30)//<-- Chance percentage
                 {
-                    var distanceToAdd = new Random().Next(100, 300);
+                    var distanceToAdd = new Random().Next(100, 200);
                     this._currentDriveDistanceInMeters += distanceToAdd;
                     
                     var distanceInKm = ((decimal) this._currentDriveDistanceInMeters) / 1000;
@@ -41,6 +44,7 @@ public class DriveTimeManager
                 var breakReminderInterval = Int32.Parse(AppSettings.BreakReminderInterval);
                 if (_currentDriveTime % (breakReminderInterval * 60) == 0)
                 {
+                    this._showPauzePopup("");
                     Debug.WriteLine("Break reminder triggered");
                 }
                 
@@ -51,6 +55,8 @@ public class DriveTimeManager
                     this._showDrinkPopup("");
                     Debug.WriteLine("Drink reminder triggered");
                 }
+                
+               
                 
                 Thread.Sleep(1000);
             }
