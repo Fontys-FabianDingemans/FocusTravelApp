@@ -7,10 +7,7 @@ using FocusTravelApp.ViewModel;
 using JetBrains.Annotations;
 using Debug = System.Diagnostics.Debug;
 
-
 namespace FocusTravelApp;
-
-
 
 public partial class ProfilePage : ContentPage
 {

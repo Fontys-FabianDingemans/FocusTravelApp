@@ -1,0 +1,122 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+                xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+                xmlns:toolkit="http://schemas.microsoft.com/dotnet/2022/maui/toolkit"
+                x:Class="FocusTravelApp.RegisterPage"
+                BackgroundColor="{StaticResource AppBackground}"
+                Padding="15, 30, 15, 0"
+                Shell.NavBarIsVisible="False"
+                Shell.TabBarIsVisible="False">
+    
+    <ContentPage.Resources>
+        <Style x:Key="InvalidEntryStyle" TargetType="Entry">
+            <Setter Property="TextColor" Value="Red" />
+        </Style>
+        <Style x:Key="ValidEntryStyle" TargetType="Entry">
+            <Setter Property="TextColor" Value="Green" />
+        </Style>
+    </ContentPage.Resources>
+    
+    <ContentPage.Content>
+        <VerticalStackLayout>
+            
+            <Image 
+                Source="appicon.png" 
+                HeightRequest="100" 
+                WidthRequest="100" 
+                HorizontalOptions="Center" 
+                VerticalOptions="Center"
+                />
+            
+            <Label 
+                Text="Registreren" 
+                FontSize="35"
+                FontAttributes="Bold"
+                HorizontalTextAlignment="Center" 
+                TextColor="White" 
+                Margin="0, 0, 0, 25"
+                />
+            
+            <VerticalStackLayout
+                WidthRequest="300">
+                <Label
+                    FontSize="20"
+                    TextColor="White"
+                    Text="Gebruikersnaam:" />
+                <Border
+                    Stroke="White"
+                    StrokeThickness="1"
+                    Padding="2, -4"
+                >
+                    <Entry
+                        FontSize="18"
+                        TextColor="White"
+                        x:Name="UsernameEntry"
+                    />
+                </Border>
+            </VerticalStackLayout>
+            <VerticalStackLayout
+                Margin="0, 10, 0, 0"
+                WidthRequest="300">
+                <Label
+                    FontSize="20"
+                    TextColor="White"
+                    Text="Wachtwoord:" />
+                <Border
+                    Stroke="White"
+                    StrokeThickness="1"
+                    Padding="2, -4"
+                >
+                    <Entry
+                        FontSize="18"
+                        TextColor="White"
+                        x:Name="PasswordEntry"
+                        IsPassword="True"
+                    />
+                </Border>
+            </VerticalStackLayout>
+            <VerticalStackLayout
+                Margin="0, 10, 0, 0"
+                WidthRequest="300">
+                <Label
+                    FontSize="20"
+                    TextColor="White"
+                    Text="Wachtwoord bevestigen:" />
+                <Border
+                    Stroke="White"
+                    StrokeThickness="1"
+                    Padding="2, -4"
+                >
+                    <Entry
+                        FontSize="18"
+                        TextColor="White"
+                        x:Name="PasswordConfirmEntry"
+                        IsPassword="True"
+                    />
+                </Border>
+            </VerticalStackLayout>
+            <VerticalStackLayout
+                Margin="0, 10, 0, 0"
+                WidthRequest="300">
+                <Button 
+                    Text="Registreren"
+                    FontSize="20"
+                    Clicked="RegisterButtonClicked"
+                />
+            </VerticalStackLayout>
+            
+            <VerticalStackLayout
+                Margin="0, 25, 0, 0"
+                WidthRequest="300">
+                <Button 
+                    Text="Inloggen"
+                    FontSize="20"
+                    BackgroundColor="DarkBlue"
+                    Clicked="LoginButtonClicked"
+                />
+            </VerticalStackLayout>
+
+        </VerticalStackLayout>
+    </ContentPage.Content>
+</ContentPage>
