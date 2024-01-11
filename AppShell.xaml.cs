@@ -1,4 +1,6 @@
-﻿namespace FocusTravelApp;
+﻿using FocusTravelApp.Views;
+
+namespace FocusTravelApp;
 
 public partial class AppShell : Shell
 {

@@ -1,10 +1,9 @@
 ﻿using System.Diagnostics;
+using Android.Provider;
 using CommunityToolkit.Maui.Views;
-using FocusTravelApp.Views;
-
-namespace FocusTravelApp;
-
 using FocusTravelApp.Managers;
+
+namespace FocusTravelApp.Views;
 
 public partial class MainPage : ContentPage
 {
@@ -86,27 +85,42 @@ public partial class MainPage : ContentPage
 
     private void PlayButton1Tapped(object sender, TappedEventArgs args)
     {
+        var PlayVideos = new PlayVideos(1);
         Debug.WriteLine("Play button 1 tapped!");
+        Application.Current?.Dispatcher.Dispatch(() => { this.ShowPopupAsync(PlayVideos); });
+        PlayVideos.UpdateVideoPopUp();
     }
 
     private void PlayButton2Tapped(object sender, TappedEventArgs args)
     {
+        var PlayVideos = new PlayVideos(2);
         Debug.WriteLine("Play button 2 Tapped!");
+        Application.Current?.Dispatcher.Dispatch(() => { this.ShowPopupAsync(PlayVideos); });
+        PlayVideos.UpdateVideoPopUp();
     }
 
     private void PlayButton3Tapped(object sender, TappedEventArgs args)
     {
+        var PlayVideos = new PlayVideos(3);
         Debug.WriteLine("Play button 3 tapped!");
+        Application.Current?.Dispatcher.Dispatch(() => { this.ShowPopupAsync(PlayVideos); });
+        PlayVideos.UpdateVideoPopUp();
     }
 
     private void PlayButton4Tapped(object sender, TappedEventArgs args)
     {
+        var PlayVideos = new PlayVideos(4);
         Debug.WriteLine("Play button 4 tapped!");
+        Application.Current?.Dispatcher.Dispatch(() => { this.ShowPopupAsync(PlayVideos); });
+        PlayVideos.UpdateVideoPopUp();
     }
 
     private void PlayButton5Tapped(object sender, TappedEventArgs args)
     {
+        var PlayVideos = new PlayVideos(5);
         Debug.WriteLine("Play button 5 tapped!");
+        Application.Current?.Dispatcher.Dispatch(() => { this.ShowPopupAsync(PlayVideos); });
+        PlayVideos.UpdateVideoPopUp();
     }
     
     private void ShowDrinkPopUpCallBack(string text)
@@ -118,4 +132,6 @@ public partial class MainPage : ContentPage
     {
         Application.Current?.Dispatcher.Dispatch(() => { this.ShowPopupAsync(new PauzeReminderPopUp()); });
     }
+
+    
 }

@@ -7,7 +7,8 @@
            x:Class="FocusTravelApp.Views.PauzeReminderPopUp"
            CanBeDismissedByTappingOutsideOfPopup="False">
     <VerticalStackLayout
-        BackgroundColor="White">
+        BackgroundColor="White"
+        WidthRequest="300">
         <Label Text="PauzeReminder"
                TextColor="Black" 
                FontSize="30"
