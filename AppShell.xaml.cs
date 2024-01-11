@@ -1,4 +1,7 @@
-﻿using FocusTravelApp.Views;
+using FocusTravelApp.Views;
+
+using System.Diagnostics;
+using FocusTravelApp.Managers;
 
 namespace FocusTravelApp;
 

@@ -15,4 +15,10 @@ public static class AppSettings
         set => Preferences.Default.Set("DRINK_REMINDER_INTERVAL", value);
     }
     
+    public static string UserToken
+    {
+        get => Preferences.Default.Get("USER_TOKEN", "");
+        set => Preferences.Default.Set("USER_TOKEN", value);
+    }
+    
 }
