@@ -1,7 +1,6 @@
 using System.Reflection;
 using CommunityToolkit.Maui;
 using FocusTravelApp.ViewModel;
-using FocusTravelApp.Views;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.Logging;
 using Microsoft.Maui.Controls.Compatibility.Platform.Android;
