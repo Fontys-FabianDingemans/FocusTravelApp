@@ -19,16 +19,17 @@ public partial class PlayVideos : Popup
 
     public void UpdateVideoPopUp()
     {
-        Video1.Source = $"https://testprzemek.nl/public/videos/Video{Videonummer}.mp4";
         
         if (Videonummer == 1)
         {
             OefeningTekst.Text = "Wide grip Pull ups";
+            Video1.Source = "http://videos.testprzemek.nl/video1.mp4";
         }
         
         else if (Videonummer == 2)
-        { 
+        {
             OefeningTekst.Text = "Underhand grip Pull ups";
+            Video1.Source = "http://videos.testprzemek.nl/video2.mp4";
         }
         
         else if (Videonummer == 3)
