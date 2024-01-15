@@ -1,7 +1,5 @@
 using System.Reflection;
 using CommunityToolkit.Maui;
-using FocusTravelApp.ViewModel;
-using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.Logging;
 using Microsoft.Maui.Controls.Compatibility.Platform.Android;
 
@@ -26,15 +24,9 @@ public static class MauiProgram
             });
 
         builder.Services.AddSingleton<MainPage>();
-        builder.Services.AddSingleton<MainViewModel>();
-        
         builder.Services.AddTransient<ProfilePage>();
-        builder.Services.AddTransient<ProfileViewModel>();
-        
         builder.Services.AddTransient<LoginPage>();
-        builder.Services.AddTransient<LoginViewModel>();
         builder.Services.AddTransient<RegisterPage>();
-        builder.Services.AddTransient<RegisterViewModel>();
 #if DEBUG
         builder.Logging.AddDebug();
 #endif

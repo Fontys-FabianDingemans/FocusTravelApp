@@ -1,6 +1,4 @@
 using FocusTravelApp.Managers;
-using FocusTravelApp.Models;
-using FocusTravelApp.ViewModel;
 
 namespace FocusTravelApp;
 
@@ -8,43 +6,41 @@ public partial class LoginPage : ContentPage
 {
     private AuthManager _authManager;
     
-    public string Username { get; set; }
+    public string Email { get; set; }
     public string Password { get; set; }
     
-    public LoginPage(LoginViewModel loginViewModel)
+    public LoginPage()
     {
         InitializeComponent();
-        BindingContext = loginViewModel;
+        BindingContext = this;
         
         _authManager = new AuthManager();
 
-        Username = "";
-        Password = "";
+        Email = "mail@example.com";
+        Password = "123456";
     }
 
 
     private void LoginButtonClicked(object? sender, EventArgs e)
     {
-        if (Username.Length == 0 || Password.Length == 0)
+        if (Email.Length == 0 || Password.Length == 0)
         {
-            DisplayAlert("Login Failed", "Username or password is empty", "OK");
+            DisplayAlert("Login Failed", "Email or password is empty", "OK");
             return;
         }
         
-        if (_authManager.Login(Username, Password))
+        if (_authManager.Login(Email, Password))
         {
-            var mainViewModel = new MainViewModel();
-            Navigation.PushAsync(new MainPage(mainViewModel));
+            Navigation.PushAsync(new MainPage());
         }
         else
         {
-            DisplayAlert("Login Failed", "Username or password is incorrect", "OK");
+            DisplayAlert("Login Failed", "Email or password is incorrect", "OK");
         }
     }
 
     private void RegisterButtonClicked(object? sender, EventArgs e)
     {
-        var registerViewModel = new RegisterViewModel();
-        Navigation.PushAsync(new RegisterPage(registerViewModel));
+        Navigation.PushAsync(new RegisterPage());
     }
 }

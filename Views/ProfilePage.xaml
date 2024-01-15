@@ -159,10 +159,35 @@
                         Grid.Column="1"
                         Source="chevron_right.svg"
                         HeightRequest="30" />
-
                 </Grid>
+            </Frame>
+            
+            <Frame BackgroundColor="{StaticResource DarkRed}"
+                   BorderColor="Transparent"
+                   HeightRequest="45"
+                   Padding="10, 5"
+                   Margin="0,0,0,15">
+                <Frame.GestureRecognizers>
+                    <TapGestureRecognizer Tapped="ClickedOnSignout" />
+                </Frame.GestureRecognizers>
+                <Grid>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition />
+                        <ColumnDefinition Width="30" />
+                    </Grid.ColumnDefinitions>
 
+                    <Label
+                        Grid.Column="0"
+                        FontSize="25"
+                        TextColor="White"
+                        HorizontalTextAlignment="Start"
+                        Text="Uitloggen" />
 
+                    <Image
+                        Grid.Column="1"
+                        Source="chevron_right.svg"
+                        HeightRequest="30" />
+                </Grid>
             </Frame>
 
         </VerticalStackLayout>

@@ -1,6 +1,5 @@
 using System.Diagnostics;
 using FocusTravelApp.Managers;
-using FocusTravelApp.ViewModel;
 
 
 namespace FocusTravelApp;
@@ -9,9 +8,10 @@ public partial class SettingsPage : ContentPage
 {
     private BluetoothManager _bluetoothManager;
     
-    public SettingsPage(SettingsViewModel settingsViewModel)
+    public SettingsPage()
     {
         InitializeComponent();
+        BindingContext = this;
         
         _bluetoothManager = new BluetoothManager(this.UpdateBluetoothStatusText);
 
@@ -36,13 +36,14 @@ public partial class SettingsPage : ContentPage
         _bluetoothManager.FindDeviceAndConnect();
     }
 
-    private void UpdateBluetoothStatusText(string text, Color? color, bool? buttonEnabled)
+    private void UpdateBluetoothStatusText(string text, Color? color, bool enableSearchButton, bool enableSendButton)
     {
         Application.Current?.Dispatcher.Dispatch(() =>
         {
             BluetoothStatusLabel.Text = text;
             BluetoothStatusLabel.TextColor = color ?? Color.FromRgb(255, 255, 255);
-            SearchDeviceButton.IsEnabled = buttonEnabled ?? true;
+            SearchDeviceButton.IsEnabled = enableSearchButton;
+            SendMessageButton.IsEnabled = enableSendButton;
         });
     }
     
@@ -52,4 +53,8 @@ public partial class SettingsPage : ContentPage
         Navigation.PopAsync();
     }
 
+    private void SendMessageButton_OnClicked(object? sender, EventArgs e)
+    {
+        _bluetoothManager.SendMessage();
+    }
 }
