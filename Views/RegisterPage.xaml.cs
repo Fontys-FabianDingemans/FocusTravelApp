@@ -4,9 +4,6 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using FocusTravelApp.Managers;
-using FocusTravelApp.ViewModel;
-using JetBrains.Annotations;
-using Debug = System.Diagnostics.Debug;
 
 namespace FocusTravelApp;
 
@@ -18,10 +15,10 @@ public partial class RegisterPage : ContentPage
     public string Password { get; set; }
     public string PasswordConfirm { get; set; }
     
-    public RegisterPage(RegisterViewModel registerViewModel)
+    public RegisterPage()
     {
         InitializeComponent();
-        BindingContext = registerViewModel;
+        BindingContext = this;
         
         _authManager = new AuthManager();
         
@@ -46,8 +43,7 @@ public partial class RegisterPage : ContentPage
         
         if (_authManager.Register(Username, Password))
         {
-            var mainViewModel = new MainViewModel();
-            Navigation.PushAsync(new MainPage(mainViewModel));
+            Navigation.PushAsync(new MainPage());
         }
         else
         {
@@ -57,7 +53,6 @@ public partial class RegisterPage : ContentPage
 
     private void LoginButtonClicked(object? sender, EventArgs e)
     {
-        var loginViewModel = new LoginViewModel();
-        Navigation.PushAsync(new LoginPage(loginViewModel));
+        Navigation.PushAsync(new LoginPage());
     }
 }

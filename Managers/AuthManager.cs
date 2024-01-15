@@ -1,41 +1,57 @@
+using FocusTravelApp.Http.Responses;
+
 namespace FocusTravelApp.Managers;
+
+using Http.Tasks;
 
 public class AuthManager
 {
-    
-    private string _token;
+    private string _accountToken;
 
     public AuthManager()
     {
-        _token = AppSettings.UserToken;
-    }
-    
-    public bool IsLoggedIn()
-    {
-        return !string.IsNullOrEmpty(_token);
-    }
-    
-    public string GetToken()
-    {
-        return _token;
+        _accountToken = AppSettings.UserToken;
     }
 
-    public bool Login(string username, string password)
+    public bool IsLoggedIn()
     {
-        //TODO: Call API to get token
+        return !string.IsNullOrEmpty(_accountToken);
+    }
+
+    public string GetToken()
+    {
+        return _accountToken;
+    }
+
+    public bool Login(string email, string password)
+    {
+        //TODO: Call API to login
+        LoginTask.Run(email, password, (LoginResponse response) =>
+        {
+            
+        });
         
-        AppSettings.UserToken = "temp";
+        SaveToken("temp");
         return true;
     }
 
     public bool Register(string username, string password)
     {
+        // TODO: Call API to register
+        
         throw new NotImplementedException();
     }
-    
+
     public void Logout()
     {
-        _token = string.Empty;
-        AppSettings.UserToken = string.Empty;
+        // TODO: Call API to logout
+
+        SaveToken(string.Empty);
+    }
+
+    private void SaveToken(string token)
+    {
+        _accountToken = token;
+        AppSettings.UserToken = token;
     }
 }

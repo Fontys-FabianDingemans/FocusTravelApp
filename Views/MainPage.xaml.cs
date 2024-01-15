@@ -1,6 +1,5 @@
 ﻿using System.Diagnostics;
 using CommunityToolkit.Maui.Views;
-using FocusTravelApp.ViewModel;
 using FocusTravelApp.Views;
 
 namespace FocusTravelApp;
@@ -10,21 +9,21 @@ using FocusTravelApp.Managers;
 public partial class MainPage : ContentPage
 {
     private readonly DriveTimeManager _driveTimeManager;
-    // private readonly BluetoothManager _bluetoothManager;
+    private readonly BluetoothManager _bluetoothManager;
     
-    public MainPage(MainViewModel mainViewModel)
+    public MainPage()
     {
         InitializeComponent();
+        BindingContext = this;
         
         _driveTimeManager = new DriveTimeManager(this.UpdateDriveTimeText, this.UpdateDriveDistanceText, this.ShowDrinkPopUpCallBack, this.ShowPauzePopUpCallBack);
-        //_bluetoothManager = new BluetoothManager(this.Set);
+        _bluetoothManager = new BluetoothManager();
         
         var authManager = new AuthManager();
         if (!authManager.IsLoggedIn())
         {
             Debug.WriteLine("User is not logged in! Redirecting to login page...");
-            var loginViewModel = new LoginViewModel();
-            Navigation.PushAsync(new LoginPage(loginViewModel));
+            Navigation.PushAsync(new LoginPage());
         }
         
         Device.StartTimer(TimeSpan.FromSeconds(1), () =>

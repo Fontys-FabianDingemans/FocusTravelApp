@@ -43,7 +43,7 @@
                 <Label
                     FontSize="20"
                     TextColor="White"
-                    Text="Gebruikersnaam:" />
+                    Text="Email:" />
                 <Border
                     Stroke="White"
                     StrokeThickness="1"
@@ -52,7 +52,7 @@
                     <Entry
                         FontSize="18"
                         TextColor="White"
-                        Text="{Binding Username}"
+                        Text="{Binding Email}"
                     />
                 </Border>
             </VerticalStackLayout>

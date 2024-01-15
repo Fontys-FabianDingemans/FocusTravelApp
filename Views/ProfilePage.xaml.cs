@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using FocusTravelApp.ViewModel;
+using FocusTravelApp.Managers;
 using JetBrains.Annotations;
 using Debug = System.Diagnostics.Debug;
 
@@ -11,17 +11,21 @@ namespace FocusTravelApp;
 
 public partial class ProfilePage : ContentPage
 {
-    public ProfilePage(ProfileViewModel profileViewModel)
+    public ProfilePage()
     {
         InitializeComponent();
-        BindingContext = profileViewModel;
+        BindingContext = this;
     }
 
     private void ClickedOnSettings(object sender, TappedEventArgs args)
     {
         Debug.WriteLine("Settings button tapped!");
-        var SettingsViewModel = new SettingsViewModel();
-        Navigation.PushAsync(new SettingsPage(SettingsViewModel));
+        Navigation.PushAsync(new SettingsPage());
     }
-    
+
+    private void ClickedOnSignout(object? sender, TappedEventArgs e)
+    {
+        var authManager = new AuthManager();
+        authManager.Logout();
+    }
 }
