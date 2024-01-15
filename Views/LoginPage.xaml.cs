@@ -1,4 +1,6 @@
+using FocusTravelApp.Http.Responses;
 using FocusTravelApp.Managers;
+using Microsoft.Maui.Platform;
 
 namespace FocusTravelApp;
 
@@ -29,14 +31,19 @@ public partial class LoginPage : ContentPage
             return;
         }
         
-        if (_authManager.Login(Email, Password))
+        Platform.CurrentActivity?.HideKeyboard(Platform.CurrentActivity.CurrentFocus);
+
+        _authManager.LoginAsync(Email, Password, (isSuccess, error) =>
         {
-            Navigation.PushAsync(new MainPage());
-        }
-        else
-        {
-            DisplayAlert("Login Failed", "Email or password is incorrect", "OK");
-        }
+            if (isSuccess)
+            {
+                Navigation.PushAsync(new MainPage());
+            }
+            else
+            {
+                DisplayAlert("Login Failed", error, "OK");
+            }
+        });
     }
 
     private void RegisterButtonClicked(object? sender, EventArgs e)

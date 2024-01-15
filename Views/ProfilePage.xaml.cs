@@ -26,6 +26,6 @@ public partial class ProfilePage : ContentPage
     private void ClickedOnSignout(object? sender, TappedEventArgs e)
     {
         var authManager = new AuthManager();
-        authManager.Logout();
+        authManager.LogoutAsync();
     }
 }

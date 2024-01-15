@@ -41,14 +41,14 @@ public partial class RegisterPage : ContentPage
             return;
         }
         
-        if (_authManager.Register(Username, Password))
-        {
-            Navigation.PushAsync(new MainPage());
-        }
-        else
-        {
-            DisplayAlert("Login Failed", "Username or password is incorrect", "OK");
-        }
+        // if (_authManager.RegisterAsync(Username, Password))
+        // {
+        //     Navigation.PushAsync(new MainPage());
+        // }
+        // else
+        // {
+        //     DisplayAlert("Login Failed", "Username or password is incorrect", "OK");
+        // }
     }
 
     private void LoginButtonClicked(object? sender, EventArgs e)
