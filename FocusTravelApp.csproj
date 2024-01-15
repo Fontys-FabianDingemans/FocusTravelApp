@@ -64,6 +64,7 @@
         <MauiImage Update="Resources/Images/user.png" Resize="True" BaseSize="24,24"/>
         <MauiImage Update="Resources/Images/waterbo.png" Resize="True" BaseSize="320,426"/>
         <MauiImage Update="Resources/Images/coffee.png" Resize="True" BaseSize="300,300"/>
+        
 
         <!-- Custom Fonts -->
         <MauiFont Include="Resources\Fonts\*" />
@@ -116,6 +117,9 @@
       <MauiXaml Update="Views\Popups\PauzeReminderPopUp.xaml">
         <SubType>Designer</SubType>
       </MauiXaml>
+      <MauiXaml Update="Views\Popups\PlayVideos.xaml">
+        <SubType>Designer</SubType>
+      </MauiXaml>
       <MauiXaml Update="Views\Popups\LoginPopUp.xaml">
         <SubType>Designer</SubType>
       </MauiXaml>
@@ -160,10 +164,10 @@
         <DependentUpon>RegisterPage.xaml</DependentUpon>
         <SubType>Code</SubType>
       </Compile>
-    </ItemGroup>
-
-    <ItemGroup>
-      <Folder Include="Resources\Videos\" />
+      <Compile Update="Views\Popups\PlayVideos.xaml.cs">
+        <DependentUpon>PlayVideos.xaml</DependentUpon>
+        <SubType>Code</SubType>
+      </Compile>
     </ItemGroup>
 
 </Project>

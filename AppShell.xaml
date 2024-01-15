@@ -15,17 +15,24 @@
             <ShellContent
                 Title="Home"
                 ContentTemplate="{DataTemplate local:MainPage}"
-                Route="MainPage" />
+                Route="MainPage"> </ShellContent>
         </Tab>
 
         <Tab
             Title="Profiel"
             Icon="user.png"
             >
+            
             <ShellContent
                 Title="Profile"
                 ContentTemplate="{DataTemplate local:ProfilePage}"
                 Route="ProfilePage" />
         </Tab>
+        
+       
+        
+        
+        
     </TabBar>
+
 </Shell>

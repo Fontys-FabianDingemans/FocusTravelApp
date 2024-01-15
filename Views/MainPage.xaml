@@ -149,6 +149,7 @@
                             TextColor="White"/>
 
                         <Polygon
+                            x:Name="PlayButton1"
                             Grid.RowSpan="3"
                             Grid.Column="1"
                             Points="0,1 8,5, 0,10"

@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<mct:Popup xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+           xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+           xmlns:toolkit="http://schemas.microsoft.com/dotnet/2022/maui/toolkit"
+           xmlns:mct="clr-namespace:CommunityToolkit.Maui.Views;assembly=CommunityToolkit.Maui"
+           x:Class="FocusTravelApp.Views.PlayVideos"
+           CanBeDismissedByTappingOutsideOfPopup="False">
+    <VerticalStackLayout
+        BackgroundColor="White"
+        WidthRequest="370">
+        <Grid>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="50"/>
+                <RowDefinition Height="300"/>
+                <RowDefinition Height="100"/>
+            </Grid.RowDefinitions>
+            
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="370"/>
+            </Grid.ColumnDefinitions>
+            
+            <Label 
+                x:Name="OefeningTekst"
+                Padding="0,15,0,0"
+                Text="Pull ups!"
+                FontSize="20"
+                HorizontalTextAlignment="Center"
+                FontAttributes="Bold"
+                Grid.Row="0"/>
+            
+        
+            <toolkit:MediaElement
+            x:Name="Video1"
+            Grid.Row="1"
+            ShouldAutoPlay="true"
+            Source=" https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/BigBuckBunny.mp4"
+            HeightRequest="230"
+            WidthRequest="380"
+            ShouldShowPlaybackControls="True"
+            Aspect="AspectFill"
+            ></toolkit:MediaElement>
+            
+        <Frame
+            Grid.Row="2"
+            HeightRequest="40"
+            WidthRequest="120"
+            BackgroundColor="Transparent">
+            <Button
+                Padding="0,0,0, 0"
+                BackgroundColor="Black"
+                BorderColor="Transparent"
+                HeightRequest="40"
+                WidthRequest="120"
+                Text="Close the video"
+                Clicked="CloseVideo" 
+                HorizontalOptions="Center"
+                />
+            
+        </Frame>
+        
+        </Grid>
+    </VerticalStackLayout>
+    
+    
+</mct:Popup>

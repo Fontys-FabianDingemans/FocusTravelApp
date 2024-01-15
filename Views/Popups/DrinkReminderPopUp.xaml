@@ -7,7 +7,8 @@
            x:Class="FocusTravelApp.Views.DrinkReminderPopUp"
            CanBeDismissedByTappingOutsideOfPopup="False">
     <VerticalStackLayout
-        BackgroundColor="White">
+        BackgroundColor="White"
+        WidthRequest="300">
         <Label Text="DrinkReminder"
                TextColor="Black" 
                FontSize="30"
