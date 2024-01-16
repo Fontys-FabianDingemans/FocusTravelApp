@@ -53,6 +53,8 @@
                         FontSize="18"
                         TextColor="White"
                         Text="{Binding Email}"
+                        Completed="FocusPasswordEntry"
+                        Keyboard="Email"
                     />
                 </Border>
             </VerticalStackLayout>
@@ -72,7 +74,9 @@
                         FontSize="18"
                         TextColor="White"
                         IsPassword="True"
+                        x:Name="PasswordEntry"
                         Text="{Binding Password}"
+                        Completed="SubmitForm"
                     />
                 </Border>
             </VerticalStackLayout>
@@ -82,7 +86,8 @@
                 <Button 
                     Text="Inloggen"
                     FontSize="20"
-                    Clicked="LoginButtonClicked"
+                    Clicked="SubmitForm"
+                    x:Name="LoginButton"
                     />
             </VerticalStackLayout>
             

@@ -26,6 +26,16 @@ public partial class ProfilePage : ContentPage
     private void ClickedOnSignout(object? sender, TappedEventArgs e)
     {
         var authManager = new AuthManager();
-        authManager.LogoutAsync();
+        authManager.LogoutAsync((isSuccess, error) =>
+        {
+            if (isSuccess)
+            {
+                Navigation.PushAsync(new LoginPage());
+            }
+            else
+            {
+                DisplayAlert("Login Failed", error, "OK");
+            }
+        });
     }
 }

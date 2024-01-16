@@ -10,29 +10,20 @@ using Http.Tasks;
 
 public class AuthManager
 {
-    private string _accountToken;
     
     private const string _apiUrl = "https://testprzemek.nl/api/";
 
     public AuthManager()
     {
-        _accountToken = AppSettings.UserToken;
     }
 
     public bool IsLoggedIn()
     {
-        return !string.IsNullOrEmpty(_accountToken);
+        return !string.IsNullOrEmpty(AppSettings.AccountToken);
     }
 
-    public string GetToken()
-    {
-        return _accountToken;
-    }
-
-    private Action<bool, string> _callback;
     public void LoginAsync(string email, string password, Action<bool, string> callback)
     {
-        _callback = callback;
         var t = new Thread(async () =>
         {
             // Create a HttpClient instance
@@ -48,31 +39,26 @@ public class AuthManager
                     email,
                     password
                 };
-                
-                Debug.WriteLine($"Logging in user: {email}, {password}");
 
                 // Convert request body to JSON string
-                var jsonBody = Newtonsoft.Json.JsonConvert.SerializeObject(requestBody);
-                
-                Debug.WriteLine(jsonBody);
+                var jsonBody = JsonConvert.SerializeObject(requestBody);
 
                 // Create a StringContent with the JSON body
                 var content = new StringContent(jsonBody, Encoding.UTF8, "application/json");
-                Debug.WriteLine(content.ToString());
 
                 // Make the POST request
-                var url = $"{_apiUrl}user/login";
-                Debug.WriteLine("Sending request to: " + url);
+                const string url = $"{_apiUrl}user/login";
                 var response = await httpClient.PostAsync(url, content);
 
                 var responseData = await response.Content.ReadAsStringAsync();
-                Debug.WriteLine("Response data: " + responseData);
                 
                 dynamic? responseJson = JsonConvert.DeserializeObject(responseData);
                 if (responseJson == null)
                 {
-                    Debug.WriteLine("Got null response");
-                    _callback(false, "Unknown error");
+                    Application.Current?.Dispatcher.Dispatch(() =>
+                    {
+                        callback(false, "Unknown error");
+                    });
                     return;
                 }
 
@@ -80,34 +66,115 @@ public class AuthManager
                 string message = responseJson.message ?? "Unknown error";
                 string token = responseJson.token ?? "";
                 
-                Debug.WriteLine("Got response: " + message);
-                Debug.WriteLine("Got token: " + token);
-                
-                if (isSuccess)
+                AppSettings.AccountToken = token;
+                Application.Current?.Dispatcher.Dispatch(() =>
                 {
-                    SaveToken(token);
-                }
-                _callback(isSuccess, message);// Does not work - Exception has been thrown by the target of an invocation.
+                    callback(isSuccess, message);
+                });
             }
         });
         t.Start();
     }
 
-    public void RegisterAsync(string username, string password)
+    public void RegisterAsync(string email, string password, string password_confirm, Action<bool, string> callback)
     {
-        // TODO: Call API to register
+        var t = new Thread(async () =>
+        {
+            // Create a HttpClient instance
+            using (HttpClient httpClient = new HttpClient())
+            {
+                // Set headers
+                httpClient.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("application/json"));
+                httpClient.DefaultRequestHeaders.TryAddWithoutValidation("Content-Type", "application/json; charset=utf-8");
+                
+                // Prepare request body
+                var requestBody = new
+                {
+                    email,
+                    password,
+                    password_confirm
+                };
+
+                // Convert request body to JSON string
+                var jsonBody = JsonConvert.SerializeObject(requestBody);
+
+                // Create a StringContent with the JSON body
+                var content = new StringContent(jsonBody, Encoding.UTF8, "application/json");
+
+                // Make the POST request
+                const string url = $"{_apiUrl}user/register";
+                var response = await httpClient.PostAsync(url, content);
+
+                var responseData = await response.Content.ReadAsStringAsync();
+                
+                dynamic? responseJson = JsonConvert.DeserializeObject(responseData);
+                if (responseJson == null)
+                {
+                    Application.Current?.Dispatcher.Dispatch(() =>
+                    {
+                        callback(false, "Unknown error");
+                    });
+                    return;
+                }
+
+                var isSuccess = response.IsSuccessStatusCode;
+                string message = responseJson.message ?? "Unknown error";
+                string token = responseJson.token ?? "";
+                
+                AppSettings.AccountToken = token;
+                Application.Current?.Dispatcher.Dispatch(() =>
+                {
+                    callback(isSuccess, message);
+                });
+            }
+        });
+        t.Start();
     }
 
-    public void LogoutAsync()
+    public void LogoutAsync(Action<bool, string> callback)
     {
-        // TODO: Call API to logout
+        var t = new Thread(async () =>
+        {
+            // Create a HttpClient instance
+            using (HttpClient httpClient = new HttpClient())
+            {
+                var accountToken = AppSettings.AccountToken;
+                
+                // Set headers
+                httpClient.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("application/json"));
+                httpClient.DefaultRequestHeaders.TryAddWithoutValidation("Content-Type", "application/json; charset=utf-8");
+                httpClient.DefaultRequestHeaders.Add("X-Account-Token", accountToken);
 
-        SaveToken(string.Empty);
-    }
+                // Make the POST request
+                const string url = $"{_apiUrl}user";
+                var response = await httpClient.DeleteAsync(url);
 
-    private void SaveToken(string token)
-    {
-        _accountToken = token;
-        AppSettings.UserToken = token;
+                var responseData = await response.Content.ReadAsStringAsync();
+                
+                dynamic? responseJson = JsonConvert.DeserializeObject(responseData);
+                if (responseJson == null)
+                {
+                    Application.Current?.Dispatcher.Dispatch(() =>
+                    {
+                        callback(false, "Unknown error");
+                    });
+                    return;
+                }
+
+                var isSuccess = response.IsSuccessStatusCode;
+                string message = responseJson.message ?? "Unknown error";
+                
+                if (isSuccess)
+                {
+                    AppSettings.AccountToken = "";
+                }
+                Application.Current?.Dispatcher.Dispatch(() =>
+                {
+                    callback(isSuccess, message);
+                });
+            }
+        });
+        t.Start();
     }
+    
 }
