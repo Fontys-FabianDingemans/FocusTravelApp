@@ -1,9 +1,5 @@
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using FocusTravelApp.Managers;
+using Microsoft.Maui.Platform;
 
 namespace FocusTravelApp;
 
@@ -11,7 +7,7 @@ public partial class RegisterPage : ContentPage
 {
     private AuthManager _authManager;
     
-    public string Username { get; set; }
+    public string Email { get; set; }
     public string Password { get; set; }
     public string PasswordConfirm { get; set; }
     
@@ -22,37 +18,62 @@ public partial class RegisterPage : ContentPage
         
         _authManager = new AuthManager();
         
-        Username = "";
+        Email = "";
         Password = "";
         PasswordConfirm = "";
     }
 
-    private void RegisterButtonClicked(object? sender, EventArgs e)
+    private void SubmitForm(object? sender, EventArgs e)
     {
-        if (Username.Length == 0 || Password.Length == 0 || PasswordConfirm.Length == 0)
+        RegisterButton.IsEnabled = false;
+        Platform.CurrentActivity?.HideKeyboard(Platform.CurrentActivity.CurrentFocus);
+        
+        if (Email.Length == 0 || Password.Length == 0 || PasswordConfirm.Length == 0)
         {
             DisplayAlert("Login Failed", "Username or password is empty", "OK");
+            PasswordEntry.Text = "";
+            PasswordConfirmEntry.Text = "";
+            RegisterButton.IsEnabled = true;
             return;
         }
         
         if (Password != PasswordConfirm)
         {
             DisplayAlert("Login Failed", "Passwords do not match", "OK");
+            PasswordEntry.Text = "";
+            PasswordConfirmEntry.Text = "";
+            RegisterButton.IsEnabled = true;
             return;
         }
-        
-        if (_authManager.Register(Username, Password))
+
+        _authManager.RegisterAsync(Email, Password, PasswordConfirm, (isSuccess, error) =>
         {
-            Navigation.PushAsync(new MainPage());
-        }
-        else
-        {
-            DisplayAlert("Login Failed", "Username or password is incorrect", "OK");
-        }
+            if (isSuccess)
+            {
+                Navigation.PushAsync(new MainPage());
+            }
+            else
+            {
+                DisplayAlert("Register Failed", error, "OK");
+                PasswordEntry.Text = "";
+                PasswordConfirmEntry.Text = "";
+                RegisterButton.IsEnabled = true;
+            }
+        });
     }
 
     private void LoginButtonClicked(object? sender, EventArgs e)
     {
         Navigation.PushAsync(new LoginPage());
+    }
+
+    private void FocusPasswordEntry(object? sender, EventArgs e)
+    {
+        PasswordEntry.Focus();
+    }
+
+    private void FocusPasswordConfirmEntry(object? sender, EventArgs e)
+    {
+        PasswordConfirmEntry.Focus();
     }
 }

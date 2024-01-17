@@ -43,7 +43,7 @@
                 <Label
                     FontSize="20"
                     TextColor="White"
-                    Text="Gebruikersnaam:" />
+                    Text="Email:" />
                 <Border
                     Stroke="White"
                     StrokeThickness="1"
@@ -52,7 +52,10 @@
                     <Entry
                         FontSize="18"
                         TextColor="White"
-                        x:Name="UsernameEntry"
+                        x:Name="EmailEntry"
+                        Text="{Binding Email}"
+                        Keyboard="Email"
+                        Completed="FocusPasswordEntry"
                     />
                 </Border>
             </VerticalStackLayout>
@@ -72,8 +75,10 @@
                         FontSize="18"
                         TextColor="White"
                         x:Name="PasswordEntry"
+                        Text="{Binding Password}"
                         IsPassword="True"
-                    />
+                        Completed="FocusPasswordConfirmEntry">
+                    </Entry>
                 </Border>
             </VerticalStackLayout>
             <VerticalStackLayout
@@ -92,7 +97,9 @@
                         FontSize="18"
                         TextColor="White"
                         x:Name="PasswordConfirmEntry"
+                        Text="{Binding PasswordConfirm}"
                         IsPassword="True"
+                        Completed="SubmitForm"
                     />
                 </Border>
             </VerticalStackLayout>
@@ -102,7 +109,8 @@
                 <Button 
                     Text="Registreren"
                     FontSize="20"
-                    Clicked="RegisterButtonClicked"
+                    Clicked="SubmitForm"
+                    x:Name="RegisterButton"
                 />
             </VerticalStackLayout>
             

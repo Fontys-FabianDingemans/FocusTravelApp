@@ -1,4 +1,6 @@
+using FocusTravelApp.Http.Responses;
 using FocusTravelApp.Managers;
+using Microsoft.Maui.Platform;
 
 namespace FocusTravelApp;
 
@@ -16,31 +18,46 @@ public partial class LoginPage : ContentPage
         
         _authManager = new AuthManager();
 
-        Email = "mail@example.com";
-        Password = "123456";
+        Email = "";
+        Password = "";
     }
 
 
-    private void LoginButtonClicked(object? sender, EventArgs e)
+    private void SubmitForm(object? sender, EventArgs e)
     {
+        LoginButton.IsEnabled = false;
+        Platform.CurrentActivity?.HideKeyboard(Platform.CurrentActivity.CurrentFocus);
+        
         if (Email.Length == 0 || Password.Length == 0)
         {
             DisplayAlert("Login Failed", "Email or password is empty", "OK");
+            PasswordEntry.Text = "";
+            LoginButton.IsEnabled = true;
             return;
         }
-        
-        if (_authManager.Login(Email, Password))
+
+        _authManager.LoginAsync(Email, Password, (isSuccess, error) =>
         {
-            Navigation.PushAsync(new MainPage());
-        }
-        else
-        {
-            DisplayAlert("Login Failed", "Email or password is incorrect", "OK");
-        }
+            if (isSuccess)
+            {
+                Navigation.PushAsync(new MainPage());
+            }
+            else
+            {
+                DisplayAlert("Login Failed", error, "OK");
+                PasswordEntry.Text = "";
+                LoginButton.IsEnabled = true;
+            }
+        });
     }
 
     private void RegisterButtonClicked(object? sender, EventArgs e)
     {
         Navigation.PushAsync(new RegisterPage());
+    }
+
+    private void FocusPasswordEntry(object? sender, EventArgs e)
+    {
+        PasswordEntry.Focus();
     }
 }
