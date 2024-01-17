@@ -13,7 +13,7 @@ public partial class SettingsPage : ContentPage
         InitializeComponent();
         BindingContext = this;
         
-        _bluetoothManager = new BluetoothManager(this.UpdateBluetoothStatusText);
+       // _bluetoothManager = new BluetoothManager(this.UpdateBluetoothStatusText);
 
         BreakReminderEntry.Text = AppSettings.BreakReminderInterval;
         DrinkReminderEntry.Text = AppSettings.DrinkReminderInterval;

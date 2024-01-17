@@ -120,9 +120,6 @@
       <MauiXaml Update="Views\Popups\PlayVideos.xaml">
         <SubType>Designer</SubType>
       </MauiXaml>
-      <MauiXaml Update="Views\Popups\LoginPopUp.xaml">
-        <SubType>Designer</SubType>
-      </MauiXaml>
       <MauiXaml Update="Views\LoginPage.xaml">
         <SubType>Designer</SubType>
       </MauiXaml>
@@ -150,10 +147,6 @@
       </Compile>
       <Compile Update="Views\Popups\PauzeReminderPopUp.xaml.cs">
         <DependentUpon>PauzeReminderPopUp.xaml</DependentUpon>
-        <SubType>Code</SubType>
-      </Compile>
-      <Compile Update="Views\Popups\LoginPopUp.xaml.cs">
-        <DependentUpon>LoginPopUp.xaml</DependentUpon>
         <SubType>Code</SubType>
       </Compile>
       <Compile Update="Views\LoginPage.xaml.cs">

@@ -14,7 +14,8 @@
         <HorizontalStackLayout
             VerticalOptions="Center"
             HorizontalOptions="Center"
-            >
+            HeightRequest="65">
+            
             
             <Frame
                 WidthRequest="100"
@@ -42,12 +43,12 @@
             <Grid
                 BackgroundColor="{StaticResource PrimaryDark}"
                 Margin="-20,0,0,0"
-                WidthRequest="250"
+                WidthRequest="220"
                 HeightRequest="70"
                 ZIndex="1"
                 RowSpacing="1"
                 ColumnSpacing="1"
-                Padding="28,5, 0, 5">
+                Padding="28,5, 28, 5">
                 <Grid.RowDefinitions>
                     <RowDefinition Height="30" />
                     <RowDefinition Height="30" />
@@ -95,14 +96,14 @@
         <Frame
             BackgroundColor="DarkOrange"
             BorderColor="DarkOrange"
-            Padding="15, 10, 10, 15"
+            Padding="10, 10, 10, 15"
             Margin="0,25,0,0">
             <VerticalStackLayout>
                 <Label
                     x:Name="LabelTijd"
                     Text="PlaceHolder"
                     TextColor="White"
-                    FontSize="20"
+                    FontSize="18"
                     FontAttributes="Bold" />
                 <Label
                     Text="Leef als een gezonde chauffeur!"
@@ -121,7 +122,7 @@
             <ScrollView>
                 <VerticalStackLayout>
                     <Frame x:Name="FrameOefening1"
-                        Padding="10,10,0,8"
+                        Padding="10,10,10,8"
                         BackgroundColor="DimGrey"
                         Margin="0,0,0,10"
                         >
@@ -131,7 +132,7 @@
                                 <RowDefinition Height="20" />
                             </Grid.RowDefinitions>
                             <Grid.ColumnDefinitions>
-                                <ColumnDefinition Width="260" />
+                                <ColumnDefinition Width="240" />
                                 <ColumnDefinition Width="50" />
                             </Grid.ColumnDefinitions>
 
@@ -145,18 +146,19 @@
                         <Label
                             Grid.Column="0"
                             Grid.Row="1"
-                            Text="Dit is oefening 1, je kan 'm nu uitvoeren!" 
+                            Text="Wide Grip Pull ups!" 
                             TextColor="White"/>
 
                         <Polygon
                             x:Name="PlayButton1"
-                            Grid.RowSpan="3"
+                            Grid.RowSpan="2"
                             Grid.Column="1"
                             Points="0,1 8,5, 0,10"
                             Stroke="Black"
                             Fill="green"
                             Scale="3.0"
-                            Margin="40,15,0,10">
+                            HorizontalOptions="Center"
+                            Margin="0,15,0,10">
                             <Polygon.GestureRecognizers>
                                 <TapGestureRecognizer Tapped="PlayButton1Tapped" />
                             </Polygon.GestureRecognizers>
@@ -165,7 +167,7 @@
                 </Frame>
 
                     <Frame x:Name="FrameOefening2"
-                        Padding="10,10,0,8"
+                        Padding="10,10,10,8"
                         BackgroundColor="DimGrey"
                         Margin="0,0,0,10"
                         >
@@ -176,7 +178,7 @@
                             </Grid.RowDefinitions>
 
                         <Grid.ColumnDefinitions>
-                            <ColumnDefinition Width="260" />
+                            <ColumnDefinition Width="240" />
                             <ColumnDefinition Width="50" />
                         </Grid.ColumnDefinitions>
                         <Label
@@ -189,18 +191,19 @@
 
                         <Label
                             Grid.Row="1"
-                            Text="Dit is oefening 2, je kan 'm nu uitvoeren!"
+                            Text="Underhand Grip Pull ups!"
                             Padding="0,0,0,0" 
                             TextColor="White"/>
 
                         <Polygon
-                            Grid.RowSpan="3"
+                            Grid.RowSpan="2"
                             Grid.Column="1"
                             Points="0,1 8,5, 0,10"
                             Stroke="Black"
                             Fill="green"
                             Scale="3.0"
-                            Margin="40,15,0,10">
+                            HorizontalOptions="Center"
+                            Margin="0,15,0,10">
                             <Polygon.GestureRecognizers>
                                 <TapGestureRecognizer Tapped="PlayButton2Tapped" />
                             </Polygon.GestureRecognizers>
@@ -220,7 +223,7 @@
                             <RowDefinition Height="20" />
                         </Grid.RowDefinitions>
                         <Grid.ColumnDefinitions>
-                            <ColumnDefinition Width="260" />
+                            <ColumnDefinition Width="240" />
                             <ColumnDefinition Width="50" />
                         </Grid.ColumnDefinitions>
                         <Label
@@ -232,18 +235,19 @@
                             FontAttributes="Bold" />
                         <Label
                             Grid.Row="1"
-                            Text="Dit is oefening 3, je kan 'm nu uitvoeren!" 
+                            Text="Side plank!" 
                             TextColor="White"/>
 
                         <Polygon
                             x:Name="Playbutton3"
-                            Grid.RowSpan="3"
+                            Grid.RowSpan="2"
                             Grid.Column="1"
                             Points="0,1 8,5, 0,10"
                             Stroke="Black"
                             Fill="green"
                             Scale="3.0"
-                            Margin="40,15,0,10">
+                            HorizontalOptions="Center"
+                            Margin="0,15,0,10">
                             <Polygon.GestureRecognizers>
                                 <TapGestureRecognizer Tapped="PlayButton3Tapped" />
                             </Polygon.GestureRecognizers>
@@ -263,7 +267,7 @@
                             <RowDefinition Height="20" />
                         </Grid.RowDefinitions>
                         <Grid.ColumnDefinitions>
-                            <ColumnDefinition Width="260" />
+                            <ColumnDefinition Width="240" />
                             <ColumnDefinition Width="50" />
                         </Grid.ColumnDefinitions>
                         <Label
@@ -275,18 +279,19 @@
                             FontAttributes="Bold" />
                         <Label
                             Grid.Row="1"
-                            Text="Dit is oefening 4, je kan 'm nu uitvoeren!" 
+                            Text="Decline Sit ups!" 
                             TextColor="White"/>
 
                             <Polygon
                                 x:Name="Playbutton4"
-                                Grid.RowSpan="3"
+                                Grid.RowSpan="2"
                                 Grid.Column="1"
                                 Points="0,1 8,5, 0,10"
                                 Stroke="Black"
                                 Fill="green"
                                 Scale="3.0"
-                                Margin="40,15,0,10">
+                                HorizontalOptions="Center"
+                                Margin="0,15,0,10">
                                 <Polygon.GestureRecognizers>
                                     <TapGestureRecognizer Tapped="PlayButton4Tapped" />
                                 </Polygon.GestureRecognizers>
@@ -306,7 +311,7 @@
                             <RowDefinition Height="20" />
                         </Grid.RowDefinitions>
                         <Grid.ColumnDefinitions>
-                            <ColumnDefinition Width="260" />
+                            <ColumnDefinition Width="240" />
                             <ColumnDefinition Width="50" />
                         </Grid.ColumnDefinitions>
                         <Label
@@ -318,7 +323,7 @@
                             FontAttributes="Bold" />
                         <Label
                             Grid.Row="1"
-                            Text="Dit is oefening 5, je kan 'm nu uitvoeren!"
+                            Text="Incline Push ups"
                             TextColor="White"/>
 
                         <Polygon
@@ -329,7 +334,8 @@
                             Stroke="Black"
                             Fill="green"
                             Scale="3.0"
-                            Margin="40,15,0,10">
+                            HorizontalOptions="Center"
+                            Margin="0,15,0,10">
                             <Polygon.GestureRecognizers>
                                 <TapGestureRecognizer Tapped="PlayButton5Tapped" />
                             </Polygon.GestureRecognizers>

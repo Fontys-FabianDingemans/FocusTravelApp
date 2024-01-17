@@ -7,7 +7,7 @@
            x:Class="FocusTravelApp.Views.PlayVideos"
            CanBeDismissedByTappingOutsideOfPopup="False">
     <VerticalStackLayout
-        BackgroundColor="White"
+        BackgroundColor="Black"
         WidthRequest="370">
         <Grid>
             <Grid.RowDefinitions>
@@ -35,8 +35,8 @@
             Grid.Row="1"
             ShouldAutoPlay="true"
             Source=" https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/BigBuckBunny.mp4"
-            HeightRequest="230"
-            WidthRequest="380"
+            HeightRequest="280"
+            WidthRequest="370"
             ShouldShowPlaybackControls="True"
             Aspect="AspectFill"
             ></toolkit:MediaElement>
@@ -48,11 +48,12 @@
             BackgroundColor="Transparent">
             <Button
                 Padding="0,0,0, 0"
-                BackgroundColor="Black"
+                BackgroundColor="White"
                 BorderColor="Transparent"
                 HeightRequest="40"
                 WidthRequest="120"
                 Text="Close the video"
+                TextColor="Black"
                 Clicked="CloseVideo" 
                 HorizontalOptions="Center"
                 />

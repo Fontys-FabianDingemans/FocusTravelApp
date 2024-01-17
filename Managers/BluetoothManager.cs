@@ -15,7 +15,6 @@ public class BluetoothManager
     public BluetoothManager()
     {
         _client = new BluetoothClient();
-        
         Init();
     }
     

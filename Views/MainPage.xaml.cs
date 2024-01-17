@@ -17,14 +17,13 @@ public partial class MainPage : ContentPage
         BindingContext = this;
         
         _driveTimeManager = new DriveTimeManager(this.UpdateDriveTimeText, this.UpdateDriveDistanceText, this.ShowDrinkPopUpCallBack, this.ShowPauzePopUpCallBack);
-        _bluetoothManager = new BluetoothManager();
+        //_bluetoothManager = new BluetoothManager();
         
-        var authManager = new AuthManager();
-        if (!authManager.IsLoggedIn())
-        {
-            Debug.WriteLine("User is not logged in! Redirecting to login page...");
-            Navigation.PushAsync(new LoginPage());
-        }
+        //var authManager = new AuthManager();
+        //if (!authManager.IsLoggedIn())
+        //{
+         //   Debug.WriteLine("User is not logged in! Redirecting to login page...");
+        //}
         
         Device.StartTimer(TimeSpan.FromSeconds(1), () =>
         {
@@ -32,7 +31,6 @@ public partial class MainPage : ContentPage
             return true;
         });
     }
-
     private void UpdateTimeLabel()
     {
         DateTime currentTime = DateTime.Now;
