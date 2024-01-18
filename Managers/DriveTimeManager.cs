@@ -45,7 +45,6 @@ public class DriveTimeManager
                 if (_currentDriveTime % (breakReminderInterval * 60) == 0)
                 {
                     this._showPauzePopup("");
-                    Debug.WriteLine("Break reminder triggered");
                 }
                 
                 // Drink reminder in minutes
@@ -53,10 +52,7 @@ public class DriveTimeManager
                 if (_currentDriveTime % (drinkReminderInterval * 60) == 0)
                 {
                     this._showDrinkPopup("");
-                    Debug.WriteLine("Drink reminder triggered");
                 }
-                
-               
                 
                 Thread.Sleep(1000);
             }

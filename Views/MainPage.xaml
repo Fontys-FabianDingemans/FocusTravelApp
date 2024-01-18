@@ -27,7 +27,7 @@
                 x:Name="StartStopButton"
             >
                 <Frame.GestureRecognizers>
-                    <TapGestureRecognizer Tapped="StartStopButtonTapped"></TapGestureRecognizer>
+                    <TapGestureRecognizer Tapped="StartStopButtonTapped" />
                 </Frame.GestureRecognizers>
                 <Label 
                     Text="Start"
