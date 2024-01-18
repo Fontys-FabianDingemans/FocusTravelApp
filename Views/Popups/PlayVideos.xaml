@@ -24,6 +24,7 @@
                 x:Name="OefeningTekst"
                 Padding="0,15,0,0"
                 Text="Pull ups!"
+                TextColor="White"
                 FontSize="20"
                 HorizontalTextAlignment="Center"
                 FontAttributes="Bold"
