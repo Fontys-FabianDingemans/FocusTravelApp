@@ -26,7 +26,10 @@ public partial class RegisterPage : ContentPage
     private void SubmitForm(object? sender, EventArgs e)
     {
         RegisterButton.IsEnabled = false;
-        Platform.CurrentActivity?.HideKeyboard(Platform.CurrentActivity.CurrentFocus);
+        if(Platform.CurrentActivity?.CurrentFocus != null)
+        {
+            Platform.CurrentActivity?.HideKeyboard(Platform.CurrentActivity.CurrentFocus);
+        }
         
         if (Email.Length == 0 || Password.Length == 0 || PasswordConfirm.Length == 0)
         {

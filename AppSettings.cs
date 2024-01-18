@@ -21,4 +21,10 @@ public static class AppSettings
         set => Preferences.Default.Set("ACCOUNT_TOKEN", value);
     }
     
+    public static int UserId
+    {
+        get => Preferences.Default.Get("USER_ID", -1);
+        set => Preferences.Default.Set("USER_ID", value);
+    }
+    
 }

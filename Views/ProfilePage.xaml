@@ -7,7 +7,6 @@
                 Padding="15, 30, 15, 0"
                 Shell.NavBarIsVisible="False">
 
-
     <ContentPage.Content>
         <VerticalStackLayout>
             <Frame
@@ -30,12 +29,11 @@
                         <ColumnDefinition Width="120" />
                         <ColumnDefinition Width="160" />
                         <ColumnDefinition Width="30" />
-
                     </Grid.ColumnDefinitions>
-
-
+                    
                     <Image
                         Source="profile_3135715.png"
+                        x:Name="ProfileImage"
                         Grid.RowSpan="2"
                         Grid.Row="0"
                         Grid.Column="0"
@@ -43,7 +41,8 @@
                         Margin="2, 20, 5, -5">
                     </Image>
                     <Label
-                        Text="Jane Doe"
+                        Text="Loading..."
+                        x:Name="ProfileName"
                         FontAttributes="Bold, Italic"
                         FontSize="18"
                         Margin="4,20,0,0"
@@ -51,7 +50,8 @@
                         Grid.Row="0"
                         Grid.Column="1" />
                     <Label
-                        Text="Jane.Doe@gmail.com"
+                        Text="Loading..."
+                        x:Name="ProfileEmail"
                         FontAttributes="Italic"
                         FontSize="15"
                         TextColor="White"
@@ -64,7 +64,11 @@
                         ZIndex="5"
                         Grid.Column="3"
                         Grid.Row="2"
-                        Margin="10,0,0,0" />
+                        Margin="10,0,0,0">
+                        <Image.GestureRecognizers>
+                            <TapGestureRecognizer Tapped="EditProfileButtonPressed"/>
+                        </Image.GestureRecognizers>
+                    </Image>
 
                 </Grid>
 

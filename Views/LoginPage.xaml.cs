@@ -1,4 +1,3 @@
-using FocusTravelApp.Http.Responses;
 using FocusTravelApp.Managers;
 using Microsoft.Maui.Platform;
 
@@ -20,13 +19,19 @@ public partial class LoginPage : ContentPage
 
         Email = "";
         Password = "";
+        
+        EmailEntry.Text = Email;
+        PasswordEntry.Text = Password;
     }
 
 
     private void SubmitForm(object? sender, EventArgs e)
     {
         LoginButton.IsEnabled = false;
-        Platform.CurrentActivity?.HideKeyboard(Platform.CurrentActivity.CurrentFocus);
+        if(Platform.CurrentActivity?.CurrentFocus != null)
+        {
+            Platform.CurrentActivity?.HideKeyboard(Platform.CurrentActivity.CurrentFocus);
+        }
         
         if (Email.Length == 0 || Password.Length == 0)
         {

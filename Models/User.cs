@@ -7,13 +7,13 @@ public class User
 {
     
     public int Id { get; set; }
-    public string FirstName { get; set; }
-    public string MiddleName { get; set; }
-    public string LastName { get; set; }
+    public string? FirstName { get; set; }
+    public string? MiddleName { get; set; }
+    public string? LastName { get; set; }
     public string Email { get; set; }
-    public DateTime DateOfBirth { get; set; }
-    public string ProfilePictureUrl { get; set; }
-    public SexEnum Sex { get; set; }
+    public DateTime? DateOfBirth { get; set; }
+    public string? ProfilePictureUrl { get; set; }
+    public SexEnum? Sex { get; set; }
     private bool _AccountVerified;
 
     /** Find the user by id */
@@ -33,13 +33,13 @@ public class User
     }
     
     public User(
-        string firstName,
-        string middleName,
-        string lastName,
+        string? firstName,
+        string? middleName,
+        string? lastName,
         string email,
-        DateTime dateOfBirth,
-        string profilePictureUrl,
-        SexEnum sex
+        DateTime? dateOfBirth,
+        string? profilePictureUrl,
+        SexEnum? sex
     ) {
         this.Id = 0;
         this.FirstName = firstName;
@@ -53,13 +53,13 @@ public class User
     }
     
     public User(
-        string firstName,
-        string middleName,
-        string lastName,
+        string? firstName,
+        string? middleName,
+        string? lastName,
         string email,
-        DateTime dateOfBirth,
-        string profilePictureUrl,
-        string sex
+        DateTime? dateOfBirth,
+        string? profilePictureUrl,
+        string? sex
     ) {
         this.Id = 0;
         this.FirstName = firstName;
@@ -72,23 +72,50 @@ public class User
         this._AccountVerified = false;
     }
     
+    public User(
+        int id,
+        string? firstName,
+        string? middleName,
+        string? lastName,
+        string email,
+        DateTime? dateOfBirth,
+        string? profilePictureUrl,
+        string? sex
+    )
+    {
+        this.Id = id;
+        this.FirstName = firstName;
+        this.MiddleName = middleName;
+        this.LastName = lastName;
+        this.Email = email;
+        this.DateOfBirth = dateOfBirth;
+        this.ProfilePictureUrl = profilePictureUrl;
+        this.Sex = SexEnum.FromName(sex ?? "");
+        this._AccountVerified = false;
+    }
+    
     public string GetFullName()
     {
-        return $"{FirstName} {MiddleName} {LastName}";
+        return string.IsNullOrEmpty(MiddleName) ? $"{FirstName} {LastName}" : $"{FirstName} {MiddleName} {LastName}";
     }
     
     public string GetInitials()
     {
-        return $"{FirstName[0]}{MiddleName[0]}{LastName[0]}";
+        var firstName = FirstName ?? "";
+        var middleName = MiddleName ?? "";
+        var lastName = LastName ?? "";
+        
+        return string.IsNullOrEmpty(MiddleName) ? $"{firstName[0]}{lastName[0]}" : $"{firstName[0]}{middleName[0]}{lastName[0]}";
     }
     
     public int GetAge()
     {
-        return 0;
+        return DateTime.Now.Year - this.DateOfBirth?.Year ?? 0;
     }
 
     public string GetFormattedSex()
     {
+        if(this.Sex == null) return SexEnum.Other.GetName();
         return new CultureInfo("en-US").TextInfo.ToTitleCase(this.Sex.GetName());
     }
 

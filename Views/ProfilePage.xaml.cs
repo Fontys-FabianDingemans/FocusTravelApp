@@ -15,11 +15,12 @@ public partial class ProfilePage : ContentPage
     {
         InitializeComponent();
         BindingContext = this;
+        
+        LoadUserProfile();
     }
 
     private void ClickedOnSettings(object sender, TappedEventArgs args)
     {
-        Debug.WriteLine("Settings button tapped!");
         Navigation.PushAsync(new SettingsPage());
     }
 
@@ -28,14 +29,38 @@ public partial class ProfilePage : ContentPage
         var authManager = new AuthManager();
         authManager.LogoutAsync((isSuccess, error) =>
         {
-            if (isSuccess)
-            {
-                Navigation.PushAsync(new LoginPage());
-            }
-            else
+            if (!isSuccess)
             {
                 DisplayAlert("Login Failed", error, "OK");
+                return;
+            }
+            Navigation.PushAsync(new LoginPage());
+        });
+    }
+
+    private void EditProfileButtonPressed(object? sender, TappedEventArgs e)
+    {
+        
+    }
+
+    private void LoadUserProfile()
+    {
+        var authManager = new AuthManager();
+        authManager.GetUserAsync((isSuccess, error, userInstance) =>
+        {
+            if (!isSuccess || userInstance == null)
+            {
+                DisplayAlert("Error getting profile", error, "OK");
+                return;
+            }
+            
+            ProfileName.Text = userInstance.GetFullName();
+            ProfileEmail.Text = userInstance.Email;
+            if (userInstance.ProfilePictureUrl != null)
+            {
+                ProfileImage.Source = userInstance.ProfilePictureUrl;
             }
         });
     }
+
 }

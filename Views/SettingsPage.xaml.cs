@@ -49,7 +49,6 @@ public partial class SettingsPage : ContentPage
     
     private void ClickedOnGoBackToProfile(object sender, TappedEventArgs args)
     {
-        Debug.WriteLine("Back to profile button tapped!");
         Navigation.PopAsync();
     }
 

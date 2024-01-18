@@ -55,6 +55,7 @@
                         Text="{Binding Email}"
                         Completed="FocusPasswordEntry"
                         Keyboard="Email"
+                        x:Name="EmailEntry"
                     />
                 </Border>
             </VerticalStackLayout>

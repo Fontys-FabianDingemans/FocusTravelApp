@@ -1,12 +1,10 @@
 using System.Diagnostics;
 using System.Net.Http.Headers;
 using System.Text;
-using FocusTravelApp.Http.Responses;
+using FocusTravelApp.Models;
 using Newtonsoft.Json;
 
 namespace FocusTravelApp.Managers;
-
-using Http.Tasks;
 
 public class AuthManager
 {
@@ -176,5 +174,76 @@ public class AuthManager
         });
         t.Start();
     }
+    
+    public void GetUserAsync(Action<bool, string, User?> callback)
+    {
+        var t = new Thread(async () =>
+        {
+            // Create a HttpClient instance
+            using (HttpClient httpClient = new HttpClient())
+            {
+                //var accountToken = AppSettings.AccountToken;
+                var accountToken = "gel9w8pcv5iydbxya7kntosveo07g2jw";
+                
+                // Set headers
+                httpClient.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("application/json"));
+                httpClient.DefaultRequestHeaders.TryAddWithoutValidation("Content-Type", "application/json; charset=utf-8");
+                httpClient.DefaultRequestHeaders.Add("X-Account-Token", accountToken);
+                
+                // Make the POST request
+                const string url = $"{_apiUrl}user/me";
+                var response = await httpClient.GetAsync(url);
+
+                var responseData = await response.Content.ReadAsStringAsync();
+                
+                dynamic? responseJson = JsonConvert.DeserializeObject(responseData);
+                if (responseJson == null)
+                {
+                    Application.Current?.Dispatcher.Dispatch(() =>
+                    {
+                        callback(false, "Unknown error", null);
+                    });
+                    return;
+                }
+
+                var isSuccess = response.IsSuccessStatusCode;
+                string message = responseJson.message ?? "Unknown error";
+                
+                if (isSuccess)
+                {
+                    dynamic? user = responseJson.user;
+                    if (user == null)
+                    {
+                        Application.Current?.Dispatcher.Dispatch(() =>
+                        {
+                            callback(false, "Could not find user", null);
+                        });
+                        return;
+                    }
+                    
+                    int id = user.id ?? "";
+                    string firstName = user.firstname ?? "";
+                    string middleName = user.middleName ?? "";
+                    string surName = user.surname ?? "";
+                    string email = user.email ?? "";
+                    string dateOfBirth = user.date_of_birth;
+                    string profilePictureUrl = user.profile_picture_url ?? "";
+                    string sex = user.sex ?? "";
+
+                    DateTime? dateOfBirthDateTime = dateOfBirth != null ? DateTime.Parse(dateOfBirth) : null;
+
+                    AppSettings.UserId = id;
+                    var userInstance = new User(id, firstName, middleName, surName, email, dateOfBirthDateTime, profilePictureUrl, sex);
+                    Application.Current?.Dispatcher.Dispatch(() =>
+                    {
+                        callback(isSuccess, message, userInstance);
+                    });
+                }
+            }
+        });
+        t.Start();
+    }
+    
+    
     
 }
